@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카오스 제로 나이트메어 — 장이국</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text: #111110;
+      --muted: #6b6a65;
+      --border: #d0cfc8;
+      --tag-bg: #ebebE7;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: #fff;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .btn-bar {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      z-index: 10;
+    }
+
+    .btn-back {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-ext {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--text);
+      background: var(--text);
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    @media print { .btn-bar { display: none; } body { padding: 0; } }
+
+    /* HEADER */
+    header {
+      border-bottom: 2px solid var(--text);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.25rem;
+    }
+
+    header .subtitle {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      background: var(--tag-bg);
+      color: var(--muted);
+      padding: 0.3rem 0.6rem;
+      letter-spacing: 0.02em;
+      display: inline-block;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+
+    /* SECTIONS */
+    section { margin-bottom: 2.5rem; }
+
+    .sec-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    /* SUMMARY */
+    .summary {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 0.5rem;
+    }
+
+    /* STATS TABLE */
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: 1rem;
+    }
+
+    .stats-table th {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-table td {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .stats-table td:last-child {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .stats-table tr.highlight td {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* TIMELINE */
+    .period {
+      margin-bottom: 2rem;
+    }
+
+    .period-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .period-header h3 {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .period-header .count {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .work-category {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 0.75rem 0 0.25rem;
+    }
+
+    .work-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .work-list li {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .work-list li::before {
+      content: '\2014';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+    }
+
+    /* SYSTEM DETAIL */
+    .system-block {
+      margin-bottom: 1.5rem;
+    }
+
+    .system-block h4 {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    @media (max-width: 560px) {
+      .header-meta { flex-direction: column; gap: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="btn-bar">
+    <a href="index.html" class="btn-back">&larr; Back</a>
+    <a href="https://chaoszeronightmare.onstove.com/ko" target="_blank" class="btn-ext">Official Site &nearr;</a>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <h1>카오스 제로 나이트메어</h1>
+    <p class="subtitle">SuperCreativeInc. &middot; Game Content Programmer &middot; 2022.08 &mdash; 2026.04</p>
+    <div class="header-meta">
+      <span>멀티플랫폼 (AOS &middot; iOS &middot; PC) 서브컬처 덱빌딩 게임</span>
+      <span>총 590건 이슈 처리</span>
+    </div>
+    <div class="tags">
+      <span class="tag">유나 엔진</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">FMOD</span>
+      <span class="tag">MySQL</span>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <section>
+    <p class="sec-title">Issues by Period</p>
+    <table class="stats-table">
+      <thead>
+        <tr><th>Period</th><th>Count</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2022 H2</td><td>14</td></tr>
+        <tr><td>2023 H1</td><td>26</td></tr>
+        <tr><td>2023 H2</td><td>30</td></tr>
+        <tr><td>2024 H1</td><td>109</td></tr>
+        <tr><td>2024 H2</td><td>51</td></tr>
+        <tr><td>2025 H1</td><td>85</td></tr>
+        <tr><td>2025 H2</td><td>77</td></tr>
+        <tr><td>2026 H1</td><td>3</td></tr>
+        <tr class="highlight"><td>Total</td><td>590</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- CORE SYSTEMS -->
+  <section>
+    <p class="sec-title">Core Systems</p>
+
+    <div class="system-block">
+      <h4>스토리 플레이어</h4>
+      <ul class="work-list">
+        <li>StoryPlayArgs 인터페이스 설계 (약 40개 필드)</li>
+        <li>playCut() 8단계 실행 순서 구현</li>
+        <li>StoryActor 클래스: 노드 계층, 렌더 레이어, 포트레이트, 이펙트</li>
+        <li>스토리 이펙트 4축 구조, 포스트프로세싱 (블러/글리치/환상)</li>
+        <li>선택지 시스템: 루트 분기, 심리상담, 메신저 분기</li>
+        <li>데이터 구조: story_sub, actor, list_story_resource 테이블 설계</li>
+        <li>특전 (LiveEvent): 다중 스파인 레이어 모델</li>
+        <li>SSRStoryViewer: 시나리오 라이터용 뷰어 도구 제작</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>스토리 컨텐츠</h4>
+      <ul class="work-list">
+        <li>노드 재생 플로우: STORY, TEXT, CHAOS, SIMULATION, EXPERIENCE 타입별 처리</li>
+        <li>데이터 계층: 메인스토리/임무/트라우마코드/디재스터/이벤트 &rarr; 챕터 &rarr; 노드</li>
+        <li>에피소드 UI 매핑: 페이지별/노드 타입별 UI 클래스 분류</li>
+        <li>페이지 상속 구조: PageStoryBase &rarr; PageStoryCommon &rarr; 4개 컨텐츠 페이지</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>튜토리얼</h4>
+      <ul class="work-list">
+        <li>TutorialSceneManager: 인게임 튜토리얼 씬 풀(TSP) 실행/관리</li>
+        <li>OutgameTutorial: 아웃게임 진입 시점 튜토리얼 시스템</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>사운드</h4>
+      <ul class="work-list">
+        <li>Python VAD 도구: 음성 WAV에서 구간 추출 &rarr; JSON 저장</li>
+        <li>FMOD Studio 스크립팅: 보이스 이벤트 생성, 뱅크 분리, Clear 구간 마커</li>
+        <li>BGM Ducking, PV 사운드 분리, 시스템 사운드 전반 개선</li>
+        <li>립싱크 데이터 자동화 R&D 및 구현</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>중국 결제 SDK (Xcent Midas)</h4>
+      <ul class="work-list">
+        <li>Midas IAP 결제 연동: Script/Server/Client 3개 저장소, 130건+ 커밋</li>
+        <li>크리스탈 구매/결제 호출, 에테르 보충, 시즌패스 구매 등 상용화 결제 전반</li>
+        <li>중국 2차 CBT 결제 에러 처리 및 QA 대응</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>전투 임무 시스템</h4>
+      <ul class="work-list">
+        <li>어비스 모드 / 광폭화 시스템 구현</li>
+        <li>전투 임무 6장 추가 구현, 승급 임무</li>
+        <li>하드모드, 챕터 달성 보상, 별 보상 팝업</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>특전 시스템</h4>
+      <ul class="work-list">
+        <li>로비 특전 배경화면 획득/사운드/터치 적용</li>
+        <li>영상 특전 애니 클립, 특전 외출 기능</li>
+        <li>다중 스파인 레이어 모델 (LiveEvent/LiveEventBG)</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>심리 상담 시스템</h4>
+      <ul class="work-list">
+        <li>선택지 구조 변경, 상담 기록 보상 개선</li>
+        <li>캐릭터별 밤/낮 마스킹 연출, 신작 적용 툴</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>인게임 영상 자막 송출</h4>
+      <ul class="work-list">
+        <li>다국어 보이스+자막 조합 기능 (한/일/영/중번 조합)</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>메신저 시스템</h4>
+      <ul class="work-list">
+        <li>메신저 시스템 개발 구현 및 폴리싱</li>
+        <li>즐겨찾기, 카테고리 정렬</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section>
+    <p class="sec-title">Work Timeline</p>
+
+    <div class="period">
+      <div class="period-header">
+        <h3>2022 H2</h3>
+        <span class="count">14건</span>
+      </div>
+      <ul class="work-list">
+        <li>미지스팟 캐릭터 색상 톤 적용, 기본 보상 구현</li>
+        <li>몬스터 행동예고 ENUM 추가, 스킬 시각화 구현</li>
+        <li>스토리 시스템 3배속 개발, 코드 리팩토링</li>
+        <li>행성 컬렉션 시스템 구현</li>
+        <li>B9 폴리싱 대응</li>
+      </ul>
+    </div>
+
+    <div class="period">
+      <div class="period-header">
+        <h3>2023 H1</h3>
+        <span class="count">26건</span>
+      </div>
+      <ul class="work-list">
+        <li>스토리 출력 시스템 리팩토링 및 캐릭터 셰이더 개선</li>
+        <li>스토리 플레이어 보이스 재생, 화면 분리 연출 구현</li>
+        <li>사운드 파일 리소스명 정리 및 규칙 생성</li>
+        <li>스토리 portrait actor 리팩토링 + frame 기능</li>
+        <li>가챠 페이지 UI, 장비 시스템 구현</li>
+        <li>B13 인게임 난이도 조절 시스템 구현</li>
+        <li>별의 기억 리뉴얼, 미지스팟 개선 UI 적용</li>
+      </ul>
+    </div>
+
+    <div class="period">
+      <div class="period-header">
+        <h3>2023 H2</h3>
+        <span class="count">30건</span>
+      </div>
+      <ul class="work-list">
+        <li>배경 오브젝트 컨트롤 연출툴 제작 및 개선</li>
+        <li>스토리 플레이어 액터 피봇 구조 변경, 등장 이펙트 개선</li>
+        <li>스토리 이펙트 정리/제작 (캠 쉐이킹, 글리치, 회상 셰이더)</li>
+        <li>미지스팟 간소화 및 메타시스템 구현, NPC 퀘스트 시스템</li>
+        <li>스토리 페이지 개발, 스킬 트리 구현</li>
+        <li>해상도 값 실시간 조절 기능 개발</li>
+      </ul>
+    </div>
+
+    <div class="period">
+      <div class="period-header">
+        <h3>2024 H1</h3>
+        <span class="count">109건</span>
+      </div>
+      <p class="work-category">튜토리얼 시스템</p>
+      <ul class="work-list">
+        <li>시스템 개선, 포커스 영역 개선, CCB3 튜토리얼, 아웃게임 튜토리얼 (10건+)</li>
+      </ul>
+      <p class="work-category">스토리 플레이어</p>
+      <ul class="work-list">
+        <li>선택지 기능, 오토 시스템, 배속 보정, 텍스트 박스 전환, 페이드 인 (15건+)</li>
+      </ul>
+      <p class="work-category">소중한 순간</p>
+      <ul class="work-list">
+        <li>RnD 개발, 립싱크 개선, 스파인 구조, UI 구현, 인게임 적용 (10건)</li>
+      </ul>
+      <p class="work-category">FMOD / 사운드</p>
+      <ul class="work-list">
+        <li>Programmer Instrument GetLength, 보이스 로컬라이징, CLEAR 편의성 개선</li>
+      </ul>
+      <p class="work-category">기타</p>
+      <ul class="work-list">
+        <li>제로 시스템 FGT 개편, 미지스팟 전투 슬롯, 성별/닉네임 UI, 모바일 해상도 변경</li>
+      </ul>
+    </div>
+
+    <div class="period">
+      <div class="period-header">
+        <h3>2024 H2</h3>
+        <span class="count">51건</span>
+      </div>
+      <p class="work-category">기물 시스템</p>
+      <ul class="work-list">
+        <li>시스템 구현, 1차/2차 폴리싱, 이펙트 적용, 이벤트 스팟</li>
+      </ul>
+      <p class="work-category">메인 스토리</p>
+      <ul class="work-list">
+        <li>2화/3화 전투 개선, 보스 모드, 8화 연출, UI 개편, 스토리맵 개편</li>
+      </ul>
+      <p class="work-category">튜토리얼</p>
+      <ul class="work-list">
+        <li>아웃게임 튜토리얼 구현/폴리싱, 제로 스킬 튜토리얼, 서포터 전투 튜토리얼</li>
+      </ul>
+      <p class="work-category">기타</p>
+      <ul class="work-list">
+        <li>로비 개선, 특전 획득 팝업, 3배속 기능 개선, 다시선택 기능</li>
+      </ul>
+    </div>
+
+    <div class="period">
+      <div class="period-header">
+        <h3>2025 H1</h3>
+        <span class="count">85건</span>
+      </div>
+      <p class="work-category">카오스 탐사</p>
+      <ul class="work-list">
+        <li>하드모드, 신규 튜토리얼, 스토리 맵 기능, 카오스핵 등장연출</li>
+      </ul>
+      <p class="work-category">트라우마 코드</p>
+      <ul class="work-list">
+        <li>동기화, 이어하기, 링크크래시 경고창, 딥 트라우마 모드</li>
+      </ul>
+      <p class="work-category">스토리맵</p>
+      <ul class="work-list">
+        <li>전투/스토리 임무 노드 차별화, 챕터 이동 개선, 클리어 연출</li>
+      </ul>
+      <p class="work-category">기타</p>
+      <ul class="work-list">
+        <li>초공간의 유역, 로비 특전, 심리상담 캐릭터별 밤/낮 마스킹</li>
+      </ul>
+    </div>
+
+    <div class="period">
+      <div class="period-header">
+        <h3>2025 H2</h3>
+        <span class="count">77건</span>
+      </div>
+      <p class="work-category">은하계 재해</p>
+      <ul class="work-list">
+        <li>스토리 파트 서버, 카오스 미션 UI, 스토리 UI/기능, 시즌 종료, 튜토리얼</li>
+      </ul>
+      <p class="work-category">메신저 시스템</p>
+      <ul class="work-list">
+        <li>개발 구현, 기능 폴리싱, 즐겨찾기 저장소 변경</li>
+      </ul>
+      <p class="work-category">TGS</p>
+      <ul class="work-list">
+        <li>시연용 빌드 제작, 폴리싱, 엘리트 전투 난입</li>
+      </ul>
+      <p class="work-category">사운드</p>
+      <ul class="work-list">
+        <li>시스템 사운드 전반 개선 1차/2차, BGM Ducking, PV 사운드 분리</li>
+      </ul>
+      <p class="work-category">기타</p>
+      <ul class="work-list">
+        <li>특전 시스템 개선, 심리상담 선택지 구조 변경, 스토리 초회 스킵/다시보기</li>
+      </ul>
+    </div>
+
+    <div class="period">
+      <div class="period-header">
+        <h3>2026 H1</h3>
+        <span class="count">3건</span>
+      </div>
+      <ul class="work-list">
+        <li>시즌 종료 팝업 스케줄 대응</li>
+        <li>튜토리얼 노드 탐색 로직 개선</li>
+      </ul>
+    </div>
+  </section>
+
+</body>
+</html>

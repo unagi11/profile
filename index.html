@@ -56,7 +56,11 @@
       justify-content: space-between;
       padding: 0 2.5rem;
       height: 56px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
+
+    nav::-webkit-scrollbar { display: none; }
 
     .nav-logo {
       font-family: var(--mono);
@@ -91,11 +95,11 @@
     section {
       max-width: 800px;
       margin: 0 auto;
-      padding: 6rem 2.5rem;
+      padding: 4rem 2.5rem;
     }
 
     section + section {
-      padding-top: 5rem;
+      padding-top: 3rem;
       border-top: 1px solid var(--border);
     }
 
@@ -282,7 +286,7 @@
       display: grid;
       grid-template-columns: 160px 1fr;
       gap: 3rem;
-      padding: 3rem 0;
+      padding: 2rem 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -455,11 +459,12 @@
 
     /* RESPONSIVE */
     @media (max-width: 600px) {
-      nav { padding: 0 1.25rem; }
-      .nav-links { gap: 1.25rem; }
+      nav { padding: 0 1.25rem; overflow-x: auto; }
+      .nav-links { gap: 1.25rem; flex-shrink: 0; }
+      .nav-links li { flex-shrink: 0; }
       section { padding-left: 1.25rem; padding-right: 1.25rem; }
-      #hero { grid-template-columns: 1fr; }
-      .hero-photo { height: auto; width: 100%; object-position: center center; }
+      #hero { grid-template-columns: 1fr 120px; gap: 0 1.5rem; }
+      .hero-photo { height: auto; width: 120px; object-position: center center; margin-top: 0; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .about-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
@@ -510,7 +515,7 @@
           자체 엔진 기반의 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 출시와 유지보수 경험이 있습니다.
         </p>
         <p>
-          스토리 플레이 · 튜토리얼 · 임무 시스템 제작부터 TGS 시연 버전 빌드, 중국 결제 SDK 연동까지 컨텐츠 전반을 담당하였습니다.
+          스토리 플레이어 · 튜토리얼 · 전투 임무 · 메신저 · 심리 상담 · 특전 시스템 등 게임 컨텐츠 전반과 중국 결제 SDK 연동, TGS 시연 빌드까지 담당하였습니다.
         </p>
       </div>
       <div class="about-meta">
@@ -542,18 +547,22 @@
 
     <div class="timeline">
       <div class="timeline-item">
-        <span class="tl-period">2022.08 — 현재</span>
+        <span class="tl-period">2022.08 — 2026.04</span>
         <div class="tl-content">
           <h3>SuperCreativeInc.</h3>
           <p class="tl-company">Game Content Programmer · 카오스 제로 나이트메어</p>
           <ul class="tl-list">
             <li>스토리 플레이어 제작</li>
+            <li>스토리 컨텐츠 / 스토리맵 개편</li>
             <li>튜토리얼 시스템 제작</li>
-            <li>초반 플로우 제작</li>
-            <li>임무 시스템 제작</li>
-            <li>TGS 시연 버전 제작</li>
-            <li>중국 결제 SDK 연동</li>
+            <li>전투 임무 시스템 제작</li>
             <li>메신저 시스템 제작</li>
+            <li>심리 상담 시스템 제작</li>
+            <li>특전 시스템 제작</li>
+            <li>사운드 시스템 / FMOD 스크립팅</li>
+            <li>중국 결제 SDK 연동 (Xcent Midas)</li>
+            <li>인게임 영상 자막 송출</li>
+            <li>TGS 시연 버전 제작</li>
           </ul>
         </div>
       </div>
@@ -562,6 +571,10 @@
         <div class="tl-content">
           <h3>CrossLabInc.</h3>
           <p class="tl-company">Unity Intern Programmer</p>
+          <ul class="tl-list">
+            <li>UI 작업</li>
+            <li>Firebase 연동</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -617,15 +630,16 @@
     <p class="sec-label">Projects</p>
     <div class="projects-list">
 
-      <a href="#" class="project-item">
+      <a href="project-czn.html" class="project-item">
         <div>
           <p class="project-num">01</p>
           <h3>카오스 제로 나이트메어</h3>
-          <p>멀티플랫폼(AOS · iOS · PC) 서브컬쳐 덱빌딩 게임. 스토리 플레이어, 튜토리얼, 임무 시스템 등 핵심 컨텐츠 전반 제작.</p>
+          <p>멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임. 스토리 · 튜토리얼 · 전투 임무 · 메신저 · 심리 상담 · 특전 · 사운드 등 컨텐츠 전반 제작.</p>
           <div class="project-tags">
-            <span class="tag">자체 엔진</span>
-            <span class="tag">C#</span>
-            <span class="tag">2022.08 — 2026.04</span>
+            <span class="tag">유나 엔진</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">FMOD</span>
+            <span class="tag">MySQL</span>
           </div>
         </div>
         <span class="project-arrow">↗</span>
