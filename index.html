@@ -288,6 +288,14 @@
 
     .timeline-item:last-child { border-bottom: none; }
 
+    a.timeline-link {
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s;
+    }
+
+    a.timeline-link:hover { opacity: 0.6; }
+
     .tl-period {
       font-family: var(--mono);
       font-size: 12px;
@@ -468,7 +476,9 @@
     <a href="#hero" class="nav-logo">JANG.EIGUK</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
+      <li><a href="#skills">Career</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certificates">Certificates</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -526,9 +536,9 @@
     </div>
   </section>
 
-  <!-- SKILLS & CAREER -->
+  <!-- CAREER -->
   <section id="skills">
-    <p class="sec-label">Skills & Career</p>
+    <p class="sec-label">Career</p>
 
     <div class="timeline">
       <div class="timeline-item">
@@ -554,6 +564,14 @@
           <p class="tl-company">Unity Intern Programmer</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="sec-label">Education</p>
+
+    <div class="timeline">
       <div class="timeline-item">
         <span class="tl-period">2016.03 — 2022.09</span>
         <div class="tl-content">
@@ -562,6 +580,35 @@
           <p>전체 GPA 3.82 / 4.5 &nbsp;·&nbsp; 전공 GPA 3.87 / 4.5</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <p class="sec-label">Certificates</p>
+
+    <div class="timeline">
+      <a href="assets/toeic-certificate.pdf" target="_blank" class="timeline-item timeline-link">
+        <span class="tl-period">2022.05</span>
+        <div class="tl-content">
+          <h3>TOEIC 715</h3>
+          <p class="tl-company">LC 420 · RC 295</p>
+        </div>
+      </a>
+      <div class="timeline-item">
+        <span class="tl-period">2021.12</span>
+        <div class="tl-content">
+          <h3>JLPT N3</h3>
+          <p class="tl-company">141 / 180 · 합격</p>
+        </div>
+      </div>
+      <a href="assets/topcit-certificate.pdf" target="_blank" class="timeline-item timeline-link">
+        <span class="tl-period">2021.10</span>
+        <div class="tl-content">
+          <h3>TOPCIT 374 (수준 2)</h3>
+          <p class="tl-company">소프트웨어 역량 검정</p>
+        </div>
+      </a>
     </div>
   </section>
 
