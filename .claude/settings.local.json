@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/unagi/profile -type f ! -path */.git/* ! -name .DS_Store)"
+    ]
+  }
+}
