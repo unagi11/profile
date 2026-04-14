@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JANG.EIGUK Portfolio</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="120x120" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <style>
@@ -763,6 +765,37 @@
     <p>© 2026 JANG.EIGUK</p>
     <p>Last updated 2026.04.08</p>
   </footer>
+
+  <!-- Easter Egg -->
+  <style>
+    .easter-egg {
+      position: fixed;
+      top: 50%;
+      left: -200px;
+      transform: translateY(-50%);
+      width: 200px;
+      height: 200px;
+      image-rendering: pixelated;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .easter-egg.run {
+      animation: dash 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes dash {
+      0%   { left: -200px; }
+      100% { left: calc(100vw + 200px); }
+    }
+  </style>
+  <img src="assets/favicon.gif" alt="" class="easter-egg" id="easterEgg">
+  <script>
+    document.querySelector('.hero-photo').addEventListener('click', function () {
+      var el = document.getElementById('easterEgg');
+      el.classList.remove('run');
+      void el.offsetWidth;
+      el.classList.add('run');
+    });
+  </script>
 
 </body>
 </html>
