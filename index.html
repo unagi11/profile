@@ -787,13 +787,16 @@
       100% { left: calc(100vw + 200px); }
     }
   </style>
-  <img src="assets/favicon.gif" alt="" class="easter-egg" id="easterEgg">
   <script>
     document.querySelector('.hero-photo').addEventListener('click', function () {
-      var el = document.getElementById('easterEgg');
-      el.classList.remove('run');
-      void el.offsetWidth;
-      el.classList.add('run');
+      var img = document.createElement('img');
+      img.src = 'assets/favicon.gif';
+      img.alt = '';
+      img.className = 'easter-egg';
+      img.style.top = (Math.random() * 60 + 20) + '%';
+      document.body.appendChild(img);
+      void img.offsetWidth;
+      img.classList.add('run');
     });
   </script>
 
