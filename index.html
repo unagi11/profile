@@ -794,6 +794,7 @@
       img.alt = '';
       img.className = 'easter-egg';
       img.style.top = (Math.random() * 60 + 20) + '%';
+      img.style.transform = 'translateY(-50%) scaleX(-1)';
       document.body.appendChild(img);
       void img.offsetWidth;
       img.classList.add('run');
