@@ -289,12 +289,8 @@
       transform: translateY(-1px);
       z-index: 2;
     }
-    .gantt-bar::after {
-      content: attr(data-tip);
-      position: absolute;
-      bottom: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%);
+    #gantt-tip {
+      position: fixed;
       background: #1a1a1a;
       color: #fff;
       padding: 0.55rem 0.75rem;
@@ -302,15 +298,16 @@
       font-family: var(--sans);
       font-size: 11px;
       line-height: 1.5;
-      white-space: pre;
-      opacity: 0;
+      white-space: pre-line;
+      max-width: min(280px, calc(100vw - 24px));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       pointer-events: none;
+      z-index: 10000;
+      opacity: 0;
       transition: opacity 0.15s;
-      z-index: 10;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      border: 1px solid rgba(255,255,255,0.08);
     }
-    .gantt-bar:hover::after { opacity: 1; }
+    #gantt-tip.show { opacity: 1; }
 
     @media (max-width: 640px) {
       .gantt-header,
@@ -651,7 +648,7 @@
     <div class="about-grid">
       <div class="about-text">
         <p>
-          <strong>이야기가 있는 게임</strong>을 만들고 싶습니다.
+          유저가 몰입할 수 있는, <strong>이야기가 있는 게임</strong>을 만들고 싶습니다.
         </p>
         <p>
           유나 엔진(Cocos2d-x 개조) 기반의 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 제작에 참여하여 스토리 재생 시스템부터 튜토리얼, 결제 SDK 연동, Tokyo Game Show 시연용 버전까지 유저가 경험하는 게임 플로우 전반을 설계하고 구현했습니다.
@@ -1033,6 +1030,49 @@
       });
   </script>
   </footer>
+
+  <!-- Gantt Tooltip -->
+  <div id="gantt-tip"></div>
+  <script>
+    (function () {
+      var tip = document.getElementById('gantt-tip');
+      var activeBar = null;
+      function show(bar) {
+        var text = bar.dataset.tip;
+        if (!text) return;
+        tip.textContent = text;
+        tip.classList.add('show');
+        var rect = bar.getBoundingClientRect();
+        var tipRect = tip.getBoundingClientRect();
+        var margin = 10;
+        var left = rect.left + rect.width / 2 - tipRect.width / 2;
+        left = Math.max(margin, Math.min(left, window.innerWidth - tipRect.width - margin));
+        var top = rect.top - tipRect.height - 8;
+        if (top < margin) top = rect.bottom + 8;
+        tip.style.left = left + 'px';
+        tip.style.top = top + 'px';
+        activeBar = bar;
+      }
+      function hide() {
+        tip.classList.remove('show');
+        activeBar = null;
+      }
+      document.querySelectorAll('.gantt-bar').forEach(function (bar) {
+        bar.addEventListener('mouseenter', function () { show(bar); });
+        bar.addEventListener('mouseleave', hide);
+        bar.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (activeBar === bar) hide();
+          else show(bar);
+        });
+      });
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.gantt-bar')) hide();
+      });
+      window.addEventListener('scroll', hide, { passive: true });
+      window.addEventListener('resize', hide);
+    })();
+  </script>
 
   <!-- Easter Egg -->
   <style>
