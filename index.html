@@ -208,6 +208,116 @@
       background: var(--border);
     }
 
+    /* GANTT CHART */
+    .gantt {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .gantt-header {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .gantt-years {
+      position: relative;
+      height: 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gantt-years span {
+      position: absolute;
+      bottom: 0.15rem;
+      transform: translateX(-50%);
+      font-size: 10px;
+    }
+
+    .gantt-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 0.45rem;
+    }
+
+    .gantt-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .gantt-track {
+      position: relative;
+      height: 22px;
+      background: rgba(125, 125, 125, 0.08);
+      border-radius: 3px;
+    }
+
+    .gantt-bar {
+      position: absolute;
+      top: 3px;
+      bottom: 3px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 10px;
+    }
+
+    .gantt-bar-label {
+      display: block;
+      padding: 0 6px;
+      line-height: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .gantt-bar.c-career     { background: #2563eb; }
+    .gantt-bar.c-education  { background: #059669; }
+    .gantt-bar.c-military   { background: #6b7280; }
+    .gantt-bar.c-activities { background: #d97706; }
+
+    .gantt-bar {
+      cursor: pointer;
+      transition: filter 0.15s, transform 0.15s;
+    }
+    .gantt-bar:hover {
+      filter: brightness(1.15);
+      transform: translateY(-1px);
+      z-index: 2;
+    }
+    .gantt-bar::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a1a;
+      color: #fff;
+      padding: 0.55rem 0.75rem;
+      border-radius: 4px;
+      font-family: var(--sans);
+      font-size: 11px;
+      line-height: 1.5;
+      white-space: pre;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .gantt-bar:hover::after { opacity: 1; }
+
+    @media (max-width: 640px) {
+      .gantt-header,
+      .gantt-row { grid-template-columns: 70px 1fr; gap: 0.5rem; }
+      .gantt-bar { font-size: 9px; padding: 0 4px; }
+    }
+
     /* ABOUT */
     .about-grid {
       display: grid;
@@ -502,6 +612,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#timeline">Timeline</a></li>
       <li><a href="#career">Career</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#certificates">Certificates</a></li>
@@ -531,10 +642,10 @@
     <div class="about-grid">
       <div class="about-text">
         <p>
-          새로운 기술을 익히는데 주저하지않고<br>유저에게 즐거움과 영감을 주는 게임 개발자를 목표합니다.
+          새로운 기술을 익히는 데 주저하지 않고<br>유저에게 즐거움과 영감을 주는 게임 개발자를 목표합니다.
         </p>
         <p>
-          유나 엔진(Cocos2d-x 개조) 기반의 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 제작에 참여하여 스토리 재생 시스템부터 튜토리얼, 결제 SDK 연동, TGS 시연 빌드까지 유저가 경험하는 게임 플로우 전반을 설계하고 구현했습니다.
+          유나 엔진(Cocos2d-x 개조) 기반의 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 제작에 참여하여 스토리 재생 시스템부터 튜토리얼, 결제 SDK 연동, Tokyo Game Show 시연용 버전까지 유저가 경험하는 게임 플로우 전반을 설계하고 구현했습니다.
         </p>
         <p>
           유튜브, 게임 방송, 영화, 인디게임, 콘솔게임, 서브컬처 등 다양한 미디어를 즐기며, 유저 관점의 경험을 개발에 녹이는 것을 중요하게 생각합니다.
@@ -572,9 +683,10 @@
         <dt>Languages</dt>
         <dd>
           <span class="tag">TypeScript</span>
+          <span class="tag">C++</span>
           <span class="tag">C#</span>
           <span class="tag">Python</span>
-          <span class="tag">JavaScript</span>
+          <span class="tag">GLSL</span>
         </dd>
       </dl>
       <dl class="skill-group">
@@ -600,6 +712,55 @@
     </div>
   </section>
 
+  <!-- TIMELINE (GANTT) -->
+  <section id="timeline">
+    <p class="sec-label">Timeline</p>
+    <div class="gantt">
+      <div class="gantt-header">
+        <div></div>
+        <div class="gantt-years">
+          <span style="left:0%">2013</span>
+          <span style="left:14.29%">2015</span>
+          <span style="left:28.57%">2017</span>
+          <span style="left:42.86%">2019</span>
+          <span style="left:57.14%">2021</span>
+          <span style="left:71.43%">2023</span>
+          <span style="left:85.71%">2025</span>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <span class="gantt-label">Career</span>
+        <div class="gantt-track">
+          <div class="gantt-bar c-career" style="left:64.29%; width:1.19%;" data-tip="CrossLab, inc.&#10;2022.01 — 2022.02&#10;Unity Intern Programmer"></div>
+          <div class="gantt-bar c-career" style="left:68.45%; width:26.79%;" data-tip="SuperCreative&#10;2022.08 — 2026.04&#10;Game Content Programmer · 카오스 제로 나이트메어"><span class="gantt-bar-label">SuperCreative</span></div>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <span class="gantt-label">Military</span>
+        <div class="gantt-track">
+          <div class="gantt-bar c-military" style="left:36.31%; width:14.29%;" data-tip="대한민국 공군&#10;2018.02 — 2020.01&#10;제8전투비행단 · 무장정비병&#10;병장 만기 전역"><span class="gantt-bar-label">공군 무장정비</span></div>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <span class="gantt-label">Education</span>
+        <div class="gantt-track">
+          <div class="gantt-bar c-education" style="left:22.62%; width:47.02%;" data-tip="숭실대학교 컴퓨터학부&#10;2016.03 — 2022.09&#10;전체 GPA 3.82 / 4.5 · 전공 GPA 3.87 / 4.5"><span class="gantt-bar-label">숭실대학교 컴퓨터학부</span></div>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <span class="gantt-label">Activities</span>
+        <div class="gantt-track">
+          <div class="gantt-bar c-activities" style="left:0%; width:21.43%;" data-tip="CPU&#10;2013 — 2015&#10;평택고등학교 프로그래밍 동아리&#10;동아리 경진대회 방탈출/추리 게임 출품"><span class="gantt-bar-label">CPU</span></div>
+          <div class="gantt-bar c-activities" style="left:21.43%; width:48.21%;" data-tip="겜마루 (GAMMARU)&#10;2016 — 2022&#10;숭실대학교 게임 제작 중앙동아리&#10;21기 입단 · 2017년 회장&#10;공모전 2등(2016) · 3등(2021)"><span class="gantt-bar-label">겜마루</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CAREER -->
   <section id="career">
     <p class="sec-label">Career</p>
@@ -614,13 +775,14 @@
             <li>스토리 플레이어 / 뷰어 툴 제작</li>
             <li>스토리 컨텐츠 / 스토리맵 시스템 제작</li>
             <li>튜토리얼 시스템 제작</li>
-            <li>중국 결제 SDK 담당 (Tencent Midas IAP)</li>
-            <li>Tokyo Game Show 시연 버전 제작</li>
+            <li>Tencent 협업 · Midas IAP 결제 연동 · 중국 CBT 대응</li>
+            <li>Tokyo Game Show 시연용 버전 담당</li>
             <li>메신저 시스템 (유니그램) 제작</li>
             <li>심리 상담 시스템 제작</li>
             <li>캐릭터 특전 시스템 제작</li>
             <li>사운드 시스템 / FMOD 스크립팅</li>
-            <li>인게임 영상 음성, 자막 현지화</li>
+            <li>인게임 쉐이더 제작 (GLSL · 포스트프로세싱)</li>
+            <li>인게임 영상 음성, 자막 현지화 기능 제작</li>
           </ul>
         </div>
       </div>
@@ -628,18 +790,14 @@
         <span class="tl-period">2022.01 — 2022.02</span>
         <div class="tl-content">
           <h3>CrossLab, inc.</h3>
-          <p class="tl-company">숭실대학교 소속 교원기업 · Unity Intern Programmer · 2개월 계약직</p>
-          <ul class="tl-list">
-            <li>UI 작업</li>
-            <li>Firebase 연동</li>
-          </ul>
+          <p class="tl-company">숭실대학교 소속 교원기업 · Unity Intern Programmer</p>
         </div>
       </div>
       <div class="timeline-item">
         <span class="tl-period">2018.02 — 2020.01</span>
         <div class="tl-content">
           <h3>대한민국 공군</h3>
-          <p class="tl-company">제8전투비행단 · 무장정비병 (항공기무기정비) · 병장 만기 전역</p>
+          <p class="tl-company">제8전투비행단 · 무장정비병 · 병장 만기 전역</p>
         </div>
       </div>
     </div>
@@ -702,9 +860,9 @@
           <p class="tl-company">숭실대학교 게임 제작 중앙동아리 · 21기 입단 · 2017년 회장</p>
           <p class="tl-sub">게임 제작 공모전</p>
           <ul class="tl-list">
-            <li>2016년 신입생 공모전 참여 (<a href="https://youtu.be/gnvfxKXbl58" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
-            <li>2017년 OB 공모전 참여 (<a href="https://youtu.be/qa9s0fYDkRI" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
-            <li>2021년 OB 공모전 참여 · <strong>3등 입상</strong> (<a href="https://youtu.be/KvFtiTkh744" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
+            <li>2016년 신입생 공모전 — 2인 대전 게임 · <strong>2등 입상</strong> (<a href="https://youtu.be/gnvfxKXbl58" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
+            <li>2017년 OB 공모전 — 3D 어드벤처 게임 (<a href="https://youtu.be/qa9s0fYDkRI" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
+            <li>2021년 OB 공모전 — 로그라이크 SRPG · <strong>3등 입상</strong> (<a href="https://youtu.be/KvFtiTkh744" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
           </ul>
           <p class="tl-sub">운영진 활동</p>
           <ul class="tl-list">
@@ -722,7 +880,7 @@
           <p class="tl-company">평택고등학교 프로그래밍 동아리</p>
           <p class="tl-sub">게임 제작 공모전</p>
           <ul class="tl-list">
-            <li>2013년 동아리 경진대회 — 방탈출 게임 <strong>'평고탈출'</strong> 출품 · 전시 (<a href="https://youtu.be/9NBXV2DcF0c" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
+            <li>2013년 동아리 경진대회 — 방탈출 게임 출품 · 전시 (<a href="https://youtu.be/9NBXV2DcF0c" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
             <li>2014년 동아리 경진대회 — 추리 게임 출품 · 전시</li>
           </ul>
           <p class="tl-sub">동아리 활동</p>
