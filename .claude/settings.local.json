@@ -19,7 +19,8 @@
       "Bash(pip install:*)",
       "Bash(python -c \"from PIL import Image; img = Image.open\\('C:/Users/unagi/profile/assets/favicon.gif'\\); img.save\\('C:/Users/unagi/profile/assets/favicon.png'\\); img.resize\\(\\(32,32\\), Image.NEAREST\\).save\\('C:/Users/unagi/profile/assets/favicon-32.png'\\); print\\('done', img.size\\)\")",
       "Bash(python -c ' *)",
-      "WebFetch(domain:unagi11.tistory.com)"
+      "WebFetch(domain:unagi11.tistory.com)",
+      "WebFetch(domain:www.youtube.com)"
     ]
   }
 }
