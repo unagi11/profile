@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity HDRP Metro — 장이국</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="120x120" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text: #111110;
+      --muted: #6b6a65;
+      --border: #d0cfc8;
+      --tag-bg: #ebebE7;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: #fff;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .btn-bar {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      z-index: 10;
+    }
+
+    .btn-back {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-ext {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--text);
+      background: var(--text);
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    @media print { .btn-bar { display: none; } body { padding: 0; } }
+
+    header {
+      border-bottom: 2px solid var(--text);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.25rem;
+    }
+
+    header .subtitle {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      background: var(--tag-bg);
+      color: var(--muted);
+      padding: 0.3rem 0.6rem;
+      letter-spacing: 0.02em;
+      display: inline-block;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+
+    section { margin-bottom: 2.5rem; }
+
+    .sec-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .summary {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 0.5rem;
+    }
+
+    .system-block { margin-bottom: 1.5rem; }
+
+    .system-block h4 {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .work-list { list-style: none; padding: 0; }
+
+    .work-list li {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .work-list li::before {
+      content: '\2014';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+    }
+
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .meta-table th {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      width: 40%;
+    }
+
+    .meta-table td {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .pipeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 0.5rem;
+    }
+
+    .pipeline-table th,
+    .pipeline-table td {
+      padding: 0.5rem 0.75rem 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .pipeline-table th {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      width: 35%;
+    }
+
+    .pipeline-table td {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .link-list li { padding: 0.25rem 0; }
+
+    .link-list a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .link-list a:hover { border-bottom-color: var(--text); }
+
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      margin: 0.75rem 0 0.25rem;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 560px) {
+      .header-meta { flex-direction: column; gap: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="btn-bar">
+    <a href="index.html" class="btn-back">&larr; Back</a>
+    <a href="https://unagi11.tistory.com/22" target="_blank" class="btn-ext">Blog Post &nearr;</a>
+  </div>
+
+  <header>
+    <h1>Unity HDRP Metro</h1>
+    <p class="subtitle">Solo Project &middot; 1인 개발 &middot; 2021</p>
+    <div class="header-meta">
+      <span>서울 교통공사 2호선 전동차 객실 HDRP 재현</span>
+      <span>Co-op 실감형 게임 콘텐츠 개발트랙 (2021-2) 중간과제</span>
+    </div>
+    <div class="tags">
+      <span class="tag">Unity HDRP</span>
+      <span class="tag">Maya</span>
+      <span class="tag">ZBrush</span>
+      <span class="tag">Substance Painter</span>
+      <span class="tag">iTween</span>
+    </div>
+  </header>
+
+  <section>
+    <p class="sec-title">Overview</p>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/xkGl09CHS_c" title="Unity HDRP Metro" allowfullscreen></iframe>
+    </div>
+    <p class="summary">
+      서울 교통공사 2호선 2000호대 VVVF 전동차 객실을 Unity HDRP로 재현한 1인 프로젝트.
+      모델링/텍스처부터 HDRP 라이팅 세팅, 1인칭 컨트롤러, iTween 기반 순회 스크립트, 카메라 흔들림 연출까지 전 과정을 혼자 담당했습니다.
+    </p>
+    <p class="summary">
+      HDRP 파이프라인에 대한 이해와 High/Low Poly 워크플로우를 직접 체득하는 것이 목표였습니다.
+    </p>
+  </section>
+
+  <section>
+    <p class="sec-title">Project Info</p>
+    <table class="meta-table">
+      <tbody>
+        <tr><th>Period</th><td>2021 · 2 — 3주</td></tr>
+        <tr><th>Team</th><td>1인 개발</td></tr>
+        <tr><th>My Role</th><td>모델링 · 텍스처 · 프로그래밍 · 라이팅</td></tr>
+        <tr><th>Platform</th><td>PC (Windows 빌드)</td></tr>
+        <tr><th>Engine</th><td>Unity HDRP</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <p class="sec-title">Asset Pipeline</p>
+    <table class="pipeline-table">
+      <tbody>
+        <tr>
+          <th>Maya</th>
+          <td>Low Poly Mesh 제작, UV mapping</td>
+        </tr>
+        <tr>
+          <th>ZBrush</th>
+          <td>Subdivide · Surface Noise · Draw 처리를 통한 High Poly Mesh 제작</td>
+        </tr>
+        <tr>
+          <th>Substance Painter</th>
+          <td>High Poly 기반 Normal Map 베이킹, 오브젝트별 Material Layer 구성</td>
+        </tr>
+        <tr>
+          <th>Mixamo</th>
+          <td>객실 내 마네킹 모델 및 애니메이션 (외부 에셋)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <p class="sec-title">Engine &amp; Programming</p>
+
+    <div class="system-block">
+      <h4>HDRP 라이팅</h4>
+      <ul class="work-list">
+        <li>HDRP 프로젝트 셋업, Volume/Exposure/Fog 등 환경 설정</li>
+        <li>형광등 · 외부광 등 객실 내부 광원 조정</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>1인칭 컨트롤러</h4>
+      <ul class="work-list">
+        <li>객실 내부를 걸어 다닐 수 있는 FPS 컨트롤러 구현</li>
+        <li>Camera Shake Animation으로 지하철 주행 체감 연출</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>지하철 순회</h4>
+      <ul class="work-list">
+        <li>iTween 기반 경로 이동 스크립트로 지하철의 선로 운행 구현</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-title">Deliverables</p>
+    <ul class="link-list">
+      <li><a href="https://unagi11.tistory.com/22" target="_blank">Blog Write-up &nearr;</a></li>
+    </ul>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whodunit — 장이국</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="120x120" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text: #111110;
+      --muted: #6b6a65;
+      --border: #d0cfc8;
+      --tag-bg: #ebebE7;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: #fff;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .btn-bar {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      z-index: 10;
+    }
+
+    .btn-back {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-ext {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--text);
+      background: var(--text);
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    @media print { .btn-bar { display: none; } body { padding: 0; } }
+
+    header {
+      border-bottom: 2px solid var(--text);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.25rem;
+    }
+
+    header .subtitle {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      background: var(--tag-bg);
+      color: var(--muted);
+      padding: 0.3rem 0.6rem;
+      letter-spacing: 0.02em;
+      display: inline-block;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+
+    section { margin-bottom: 2.5rem; }
+
+    .sec-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .summary {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 0.5rem;
+    }
+
+    .system-block { margin-bottom: 1.5rem; }
+
+    .system-block h4 {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .work-list { list-style: none; padding: 0; }
+
+    .work-list li {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .work-list li::before {
+      content: '\2014';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+    }
+
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .meta-table th {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      width: 40%;
+    }
+
+    .meta-table td {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .link-list li { padding: 0.25rem 0; }
+
+    .link-list a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .link-list a:hover { border-bottom-color: var(--text); }
+
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      margin: 0.75rem 0 0.25rem;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 560px) {
+      .header-meta { flex-direction: column; gap: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="btn-bar">
+    <a href="index.html" class="btn-back">&larr; Back</a>
+    <a href="https://unagi11.tistory.com/28" target="_blank" class="btn-ext">Blog Post &nearr;</a>
+  </div>
+
+  <header>
+    <h1>Whodunit</h1>
+    <p class="subtitle">Team Cipher &middot; Lead Planner / Programmer &middot; 2021</p>
+    <div class="header-meta">
+      <span>실감형 1인칭 추리 게임</span>
+      <span>Co-op 실감형 게임 콘텐츠 개발트랙 (2021-1)</span>
+    </div>
+    <div class="tags">
+      <span class="tag">Unity</span>
+      <span class="tag">C#</span>
+      <span class="tag">Shader Graph</span>
+    </div>
+  </header>
+
+  <section>
+    <p class="sec-title">Overview</p>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/QTXDWA6vn-o" title="추리게임 Whodunit 시연" allowfullscreen></iframe>
+    </div>
+    <p class="summary">
+      논리적 추론과 단서만으로 살인 사건을 추리하는 1인칭 추리 게임.
+      공간 내 오브젝트와 상호작용하며 단서를 수집하고, 본인이 기획한 트릭을 플레이어가 역으로 풀어내는 구조로 설계했습니다.
+    </p>
+    <p class="summary">
+      숭실대학교 2021-1학기 &lsquo;Co-op 실감형 게임 콘텐츠 개발트랙&rsquo; 기말과제로, 메인 기획과 주요 프로그래밍을 담당했습니다.
+    </p>
+  </section>
+
+  <section>
+    <p class="sec-title">Project Info</p>
+    <table class="meta-table">
+      <tbody>
+        <tr><th>Period</th><td>2021 · 약 1개월</td></tr>
+        <tr><th>Team</th><td>Team Cipher · 총 4명 (메인 기획 1 / 메인 개발 2 / 메인 아트 1)</td></tr>
+        <tr><th>My Role</th><td>메인 기획 · 프로그래밍 · 아트 보조</td></tr>
+        <tr><th>Platform</th><td>PC (Windows 빌드)</td></tr>
+        <tr><th>Engine</th><td>Unity</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <p class="sec-title">My Contribution</p>
+
+    <div class="system-block">
+      <h4>기획</h4>
+      <ul class="work-list">
+        <li>추리(살인) 시나리오와 트릭 기획, 시스템 명세 작성</li>
+        <li>실제 미국 주택 도면을 참고한 인테리어 공간 설계 (Floor Planner 활용)</li>
+        <li>레퍼런스 분석: Scene Investigator, 크라임씬 시즌 1, Knives Out</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>Object Interact 시스템</h4>
+      <ul class="work-list">
+        <li>플레이어가 단서 오브젝트와 상호작용할 수 있도록 Object Interact 클래스 설계 및 구현</li>
+        <li>1인칭 시점에서의 포커스/인터랙션 판정 처리</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>커스텀 셰이더</h4>
+      <ul class="work-list">
+        <li>Unity Shader Graph로 오브젝트의 색이 변하는 Shader Material 제작</li>
+        <li>단서 발견 / 포커스 상태 시각화 용도</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>아트</h4>
+      <ul class="work-list">
+        <li>주방·식당 오브젝트 수집 및 제작, 공간 구현 보조</li>
+        <li>소품은 Free Asset 위주로 구성</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-title">Deliverables</p>
+    <ul class="link-list">
+      <li><a href="https://drive.google.com/file/d/1MstG5M8FI1xBX56O5UFjzW_TD0E1gvQi/view" target="_blank">Final Build (Google Drive) &nearr;</a></li>
+      <li><a href="https://drive.google.com/file/d/10X03DOVHLi_8oSZ1wkLnLZufn86E0QaE/view" target="_blank">Team &amp; Individual PPT (Google Drive) &nearr;</a></li>
+      <li><a href="https://unagi11.tistory.com/28" target="_blank">Blog Write-up &nearr;</a></li>
+    </ul>
+  </section>
+
+</body>
+</html>
