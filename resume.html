@@ -67,6 +67,33 @@
     @media print {
       .print-bar { display: none; }
       body { padding: 0; }
+
+      @page { margin: 14mm 12mm; }
+
+      /* 섹션·항목이 페이지 경계에서 잘리지 않도록 */
+      section,
+      .timeline-item,
+      .tl-content,
+      .about-text,
+      .skills-grid,
+      ul,
+      li {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* 제목이 홀로 남지 않도록 아래 블록과 붙여 유지 */
+      .sec-title,
+      .tl-sub,
+      .tl-content h3,
+      header h1,
+      h3, h4 {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      /* 문단 단위 보호 */
+      p { orphans: 3; widows: 3; }
     }
 
     /* HEADER */
