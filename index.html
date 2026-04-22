@@ -3,7 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JANG.EIGUK Portfolio</title>
+  <title>JANG.EIGUK — 게임 컨텐츠 프로그래머 포트폴리오</title>
+
+  <!-- SEO -->
+  <meta name="description" content="장이국 (JANG.EIGUK) — 게임 컨텐츠 프로그래머 포트폴리오. 유나 엔진(Cocos2d-x 개조) 기반 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 제작. TypeScript · C++ · C# · GLSL · Unity · FMOD.">
+  <meta name="author" content="장이국 (JANG.EIGUK)">
+  <meta name="keywords" content="게임 프로그래머, 게임 컨텐츠 프로그래머, Game Developer, Game Programmer, Unity, Cocos2d-x, TypeScript, 포트폴리오, JANG.EIGUK, 장이국">
+  <link rel="canonical" href="https://unagi11.github.io/profile/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unagi11.github.io/profile/">
+  <meta property="og:title" content="JANG.EIGUK — 게임 컨텐츠 프로그래머">
+  <meta property="og:description" content="유나 엔진(Cocos2d-x 개조) 기반 멀티플랫폼 서브컬처 덱빌딩 게임을 만든 게임 컨텐츠 프로그래머 장이국의 포트폴리오.">
+  <meta property="og:image" content="https://unagi11.github.io/profile/assets/profile.jpg">
+  <meta property="og:image:alt" content="장이국 (JANG.EIGUK) 프로필 사진">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="JANG.EIGUK Portfolio">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e0d" media="(prefers-color-scheme: dark)">
+
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="120x120" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1011,22 +1032,30 @@
 
   <footer>
     <p>© 2026 JANG.EIGUK</p>
-    <p id="last-updated">Last updated ...</p>
+    <p id="last-updated">Last updated 2026.04.22</p>
   <script>
-    fetch('https://api.github.com/repos/unagi11/profile/commits?per_page=1')
-      .then(r => r.json())
-      .then(data => {
-        if (data[0] && data[0].commit) {
+    (function () {
+      var el = document.getElementById('last-updated');
+      var fallback = el.textContent; // 빌드 시점 기준 기본값 유지
+      fetch('https://api.github.com/repos/unagi11/profile/commits?per_page=1')
+        .then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          if (!Array.isArray(data) || !data[0] || !data[0].commit) {
+            throw new Error('unexpected response');
+          }
           var d = new Date(data[0].commit.committer.date);
           var y = d.getFullYear();
           var m = String(d.getMonth() + 1).padStart(2, '0');
           var day = String(d.getDate()).padStart(2, '0');
-          document.getElementById('last-updated').textContent = 'Last updated ' + y + '.' + m + '.' + day;
-        }
-      })
-      .catch(function() {
-        document.getElementById('last-updated').textContent = 'Last updated 2026.04.15';
-      });
+          el.textContent = 'Last updated ' + y + '.' + m + '.' + day;
+        })
+        .catch(function () {
+          el.textContent = fallback; // API 실패 시 빌드 시점 기본값 유지
+        });
+    })();
   </script>
   </footer>
 
