@@ -1,3 +1,6 @@
 지원서_*.md
 draft_*.md
 *.draft.md
+assets/*certificate*.pdf
+.claude/
+preview.html

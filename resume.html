@@ -135,20 +135,37 @@
     }
 
     .header-contacts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.45rem 1.5rem;
+      max-width: 520px;
     }
 
-    .header-contacts a,
-    .header-contacts span {
+    .contact-item {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr);
+      gap: 0.6rem;
+      align-items: baseline;
+      min-width: 0;
+    }
+
+    .contact-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-value {
       font-family: var(--mono);
       font-size: 12px;
       color: var(--muted);
       text-decoration: none;
+      overflow-wrap: anywhere;
     }
 
-    .header-contacts a:hover { color: var(--text); }
+    a.contact-value:hover { color: var(--text); }
 
     /* SECTIONS */
     section {
@@ -289,6 +306,7 @@
 
     @media (max-width: 560px) {
       .timeline-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .header-contacts { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -305,12 +323,26 @@
       <h1>장이국</h1>
       <p class="title">Game Content Programmer</p>
       <div class="header-contacts">
-        <a href="mailto:wkddj777@gmail.com">wkddj777@gmail.com</a>
-        <span>+82 010-9954-3163</span>
-        <a href="https://github.com/unagi11" target="_blank">github.com/unagi11</a>
-        <a href="https://www.linkedin.com/in/unagi11" target="_blank">linkedin.com/in/unagi11</a>
-      <a href="https://unagi11.tistory.com" target="_blank">unagi11.tistory.com</a>
-        <span>성남시, 경기도, 대한민국</span>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a class="contact-value" href="mailto:unagi11@naver.com">unagi11@naver.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">GitHub</span>
+          <a class="contact-value" href="https://github.com/unagi11" target="_blank">github.com/unagi11</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <a class="contact-value" href="https://www.linkedin.com/in/unagi11" target="_blank">linkedin.com/in/unagi11</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Blog</span>
+          <a class="contact-value" href="https://unagi11.tistory.com" target="_blank">unagi11.tistory.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Location</span>
+          <span class="contact-value">경기 성남</span>
+        </div>
       </div>
     </div>
     <img src="assets/profile.jpg" alt="장이국" class="header-photo">
@@ -343,7 +375,7 @@
     <p class="sec-title">Skills</p>
     <dl class="skills-grid">
       <dt>Languages</dt>
-      <dd>TypeScript · C++ · C# · Python · GLSL</dd>
+      <dd>TypeScript · C++ · C# · Python</dd>
       <dt>Engine / Tools</dt>
       <dd>Cocos2d-x · Unity · Unity HDRP · Spine · FMOD Studio</dd>
       <dt>Graphics / DCC</dt>
@@ -353,7 +385,7 @@
       <dt>VCS / Collab</dt>
       <dd>Git · SVN · Mercurial · Notion</dd>
       <dt>AI Workflow</dt>
-      <dd>Claude · ChatGPT · Cursor</dd>
+      <dd>Codex · Claude · ChatGPT · Cursor</dd>
       <dt>Languages (Spoken)</dt>
       <dd>한국어 (Native) · English TOEIC 715 · 日本語 JLPT N3</dd>
     </dl>
@@ -532,7 +564,7 @@
     <div class="timeline-item">
       <span class="tl-period">2022.05</span>
       <div class="tl-content">
-        <h3><a href="assets/toeic-certificate.pdf" target="_blank" class="cert-link">TOEIC 715</a></h3>
+        <h3>TOEIC 715</h3>
         <p class="tl-company">LC 420 · RC 295</p>
       </div>
     </div>
@@ -552,7 +584,7 @@
     <div class="timeline-item">
       <span class="tl-period">2021.10</span>
       <div class="tl-content">
-        <h3><a href="assets/topcit-certificate.pdf" target="_blank" class="cert-link">TOPCIT 374 (수준 2)</a></h3>
+        <h3>TOPCIT 374 (수준 2)</h3>
         <p class="tl-company">소프트웨어 역량 검정</p>
       </div>
     </div>
