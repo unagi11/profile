@@ -225,6 +225,8 @@
     }
   </style>
   <link rel="stylesheet" href="assets/retro.css">
+  <script src="assets/embedded-page.js" defer></script>
+  <script src="assets/project-videos.js" defer></script>
 </head>
 <body class="document-shell">
 
@@ -250,18 +252,24 @@
 
   <section>
     <p class="sec-title">Overview</p>
-    <div class="video-embed">
-      <iframe src="https://www.youtube.com/embed/litM8JNOXq0" title="Pac-Chan GamePlay" allowfullscreen></iframe>
-    </div>
-    <p class="video-caption">Pac-Chan GamePlay</p>
-    <div class="video-embed">
-      <iframe src="https://www.youtube.com/embed/hFKcH2Q-xsQ" title="Pac-Chan GamePlay 2 (Clear)" allowfullscreen></iframe>
-    </div>
-    <p class="video-caption">Pac-Chan GamePlay 2 &mdash; Stage Clear</p>
     <p class="summary">
       클래식 Pac-Man을 Unity-Chan IP와 결합해 3D로 재해석한 모바일 게임. 전체 설계 및 개발을 단독 담당한 1인 프로젝트이며,
       처음으로 스토어에 정식 출시해 외부 유저의 피드백(미니맵 추가 요청 등)을 받아 업데이트까지 반영한 프로젝트입니다.
     </p>
+    <div class="video-grid">
+      <div>
+        <div class="video-embed">
+          <iframe data-video-src="https://www.youtube.com/embed/litM8JNOXq0" title="Pac-Chan 게임 플레이" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">Game Play</p>
+      </div>
+      <div>
+        <div class="video-embed">
+          <iframe data-video-src="https://www.youtube.com/embed/hFKcH2Q-xsQ" title="Pac-Chan 스테이지 클리어" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">Stage Clear</p>
+      </div>
+    </div>
   </section>
 
   <section>

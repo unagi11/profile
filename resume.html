@@ -211,10 +211,19 @@
     }
 
     .tl-period {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
       font-family: var(--mono);
       font-size: 11px;
       color: var(--muted);
       padding-top: 0.15rem;
+    }
+
+    .tl-duration {
+      color: var(--text);
+      font-size: 10px;
+      letter-spacing: 0.03em;
     }
 
     .tl-content h3 {
@@ -311,19 +320,20 @@
     }
   </style>
   <link rel="stylesheet" href="assets/retro.css">
+  <script src="assets/embedded-page.js" defer></script>
 </head>
 <body class="document-shell resume-shell">
 
   <div class="print-bar">
     <a href="index.html" class="btn-back">← Back</a>
-    <button class="btn-print" onclick="window.print()">PDF 저장</button>
+    <button class="btn-print" onclick="window.print()">Save as PDF</button>
   </div>
 
   <!-- HEADER -->
   <header>
     <div class="header-info">
       <h1>장이국</h1>
-      <p class="title">Game Content Programmer</p>
+      <p class="title">Game Content Programmer · 경력 3년 8개월</p>
       <div class="header-contacts">
         <div class="contact-item">
           <span class="contact-label">Email</span>
@@ -354,9 +364,8 @@
   <section>
     <p class="sec-title">About</p>
     <div class="about-text">
-      <p>유저가 몰입할 수 있는 <strong>이야기와 경험을 시스템으로 구현하는 게임 콘텐츠 프로그래머</strong>입니다.</p>
-      <p>약 3년 8개월간 유나 엔진(Cocos2d-x 개조) 기반 멀티플랫폼(Android · iOS · PC) 서브컬처 덱빌딩 게임의 개발·글로벌 출시·라이브 운영에 참여했습니다.</p>
-      <p>스토리·튜토리얼·메신저 같은 콘텐츠 시스템부터 결제 SDK, 사운드 자동화, 다국어 영상 송출까지 사용자 경험과 제작 파이프라인 전반의 문제를 해결했습니다.</p>
+      <p><strong>이야기에 담긴 감정이 플레이어에게 온전히 전달되도록 고민하는 게임 콘텐츠 프로그래머</strong>입니다.</p>
+      <p>스토리, 인게임·아웃게임 튜토리얼과 게임 초반 진행, 전투, 메신저부터 결제, 사운드, 다국어 영상 기능까지 폭넓게 담당했습니다.</p>
     </div>
   </section>
 
@@ -364,11 +373,9 @@
   <section>
     <p class="sec-title">Highlights</p>
     <ul>
-      <li><strong>약 3년 8개월간 단일 타이틀</strong> 개발·글로벌 출시·라이브 운영 참여 &mdash; 카오스 제로 나이트메어 (SuperCreative) · <strong>2025.10.22 글로벌 출시</strong></li>
-      <li>스토리 플레이어 · 튜토리얼 · 메신저 · 심리 상담 · 특전 · 결제 SDK 등 <strong>콘텐츠 시스템 전반</strong> 설계·구현</li>
-      <li><strong>Tokyo Game Show 시연 버전</strong> 담당 · <strong>중국 2차 CBT</strong> 결제(Midas IAP, Tencent 협업) 연동 및 QA 대응</li>
-      <li><strong>GLSL 셰이더 · FMOD 스크립팅 · Python VAD 자동화</strong> 등 여러 제작 직군을 지원하는 도구 개발</li>
-      <li>Google Play 정식 출시(Pac-chan!), 대학 공모전 <strong>2등(2016) · 3등(2021)</strong> 입상</li>
+      <li>스토리 · 인게임·아웃게임 튜토리얼과 게임 초반 진행 · 전투 · 메신저 · 심리 상담 · 캐릭터 특전 등 <strong>주요 게임 콘텐츠</strong> 구현</li>
+      <li><strong>Tokyo Game Show 시연 빌드</strong> 담당 · Tencent와 협업해 <strong>중국 2차 CBT 결제 기능</strong> 구현 및 QA 대응</li>
+      <li>인게임 사운드 · 캐릭터 보이스 · BGM과 <strong>4개 언어 영상·자막 기능</strong> 담당</li>
     </ul>
   </section>
 
@@ -393,35 +400,38 @@
   <section>
     <p class="sec-title">Career</p>
     <div class="timeline-item">
-      <span class="tl-period">2022.08 — 2026.04</span>
+      <span class="tl-period">2022.08 — 2026.04<span class="tl-duration">3년 8개월</span></span>
       <div class="tl-content">
         <h3>SuperCreative</h3>
         <p class="tl-company">스마일게이트 계열사 · Game Content Programmer · 카오스 제로 나이트메어</p>
-        <p class="tl-sub">스토리·시나리오 시스템</p>
+        <p>단일 타이틀의 개발부터 2025.10.22 글로벌 출시와 라이브 운영까지 참여</p>
+        <p class="tl-sub">Story &amp; Tutorial</p>
         <ul>
-          <li>약 40개 재생 옵션과 8단계 실행 흐름을 공통화해 다양한 스토리 콘텐츠가 공유하는 플레이어 구조 설계</li>
-          <li>Actor 계층·렌더 레이어·포트레이트·이펙트·선택지 분기를 공통 재생 흐름에 연결</li>
-          <li>메인 스토리·임무·트라우마 코드·디재스터·이벤트의 노드 재생 및 UI 확장 구조 구현</li>
-          <li>시나리오 라이터가 결과를 직접 확인할 수 있는 SSRStoryViewer 제작</li>
+          <li>여러 종류의 스토리가 함께 사용하는 스토리 플레이어와 시나리오 담당자가 직접 연출을 작업·확인하는 뷰어 툴 제작</li>
+          <li>인게임·아웃게임 튜토리얼과 게임 초반 진행 전반 담당</li>
         </ul>
-        <p class="tl-sub">콘텐츠 시스템·출시 대응</p>
+        <p class="tl-sub">Battle</p>
         <ul>
-          <li>인게임 튜토리얼 씬 풀의 실행·수명 주기 관리와 아웃게임 진입 시점 튜토리얼 구현</li>
-          <li>메신저·심리 상담·캐릭터 특전 시스템의 기능과 연출 구현</li>
-          <li>Tokyo Game Show 시연 빌드 제작·개선과 엘리트 전투 난입 연출 담당</li>
-          <li>Tencent와 협업해 Midas IAP 상품별 결제 흐름을 연동하고 중국 2차 CBT 오류 처리·QA 대응</li>
+          <li>하드 모드·어비스 모드와 초공간의 유역 콘텐츠 구현</li>
         </ul>
-        <p class="tl-sub">자동화·그래픽·현지화</p>
+        <p class="tl-sub">Character Content</p>
         <ul>
-          <li>Python VAD 도구로 음성 WAV 구간 추출 → JSON 저장 자동화</li>
-          <li>FMOD Studio 스크립팅으로 보이스 이벤트 생성·뱅크 분리·Clear 구간 마커 작업 지원</li>
-          <li>GLSL 포스트프로세싱 셰이더와 한국어·일본어·영어·중국어 번체 음성·자막 조합 송출 기능 구현</li>
+          <li>유니그램 메시지 기능과 여러 Spine 애니메이션 레이어를 순차·예약 재생하는 캐릭터 특전 시스템 구현</li>
         </ul>
-        <p>사내 이슈 기준 개발·개선 업무 <strong>395건 수행</strong>. 2026년에는 중국 2차 CBT를 위한 Midas IAP 연동을 Script·Server·Client 전반에서 별도 진행.</p>
+        <p class="tl-sub">Sound, Video &amp; Localization</p>
+        <ul>
+          <li>인게임 사운드·캐릭터 보이스·BGM 전반과 관련 기능 API 구현</li>
+          <li>인게임 영상 기능을 담당하고 한국어·일본어·영어·중국어 음성과 자막 조합 기능 구현</li>
+        </ul>
+        <p class="tl-sub">Release &amp; Global</p>
+        <ul>
+          <li>Tokyo Game Show 시연 빌드 제작과 현장 플레이 흐름 개선 담당</li>
+          <li>Tencent와 협업해 중국 2차 CBT 결제 기능을 구현하고 오류 처리·QA 대응</li>
+        </ul>
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2022.01 — 2022.02</span>
+      <span class="tl-period">2022.01 — 2022.02<span class="tl-duration">약 2개월</span></span>
       <div class="tl-content">
         <h3>CrossLab, inc.</h3>
         <p class="tl-company">숭실대학교 소속 교원기업 · Unity Intern Programmer</p>
@@ -432,7 +442,7 @@
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2018.02 — 2020.01</span>
+      <span class="tl-period">2018.02 — 2020.01<span class="tl-duration">약 2년</span></span>
       <div class="tl-content">
         <h3>대한민국 공군</h3>
         <p class="tl-company">제8전투비행단 · 무장정비병 · 병장 만기 전역</p>
@@ -448,21 +458,7 @@
   <section>
     <p class="sec-title">Projects</p>
     <div class="timeline-item">
-      <span class="tl-period">2022 — 2026</span>
-      <div class="tl-content">
-        <h3><a href="project-czn.html" class="cert-link">카오스 제로 나이트메어</a></h3>
-        <p class="tl-company">멀티플랫폼(Android · iOS · PC) 서브컬처 덱빌딩 게임 · 회사 프로젝트 · 글로벌 출시 2025.10.22</p>
-        <p>유나 엔진(Cocos2d-x 개조) · TypeScript · Spine · FMOD · MySQL · Redis</p>
-        <ul>
-          <li>스토리·튜토리얼·메신저·심리 상담·캐릭터 특전 등 사용자 콘텐츠 시스템 설계·구현</li>
-          <li>Python VAD·FMOD 스크립팅 기반 음성 제작 자동화와 GLSL 포스트프로세싱 구현</li>
-          <li>Tencent Midas IAP 중국 2차 CBT 연동 및 Tokyo Game Show 시연 빌드 담당</li>
-          <li><a href="project-czn.html" class="cert-link">프로젝트 상세 페이지에서 구조와 작업 이력 보기</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <span class="tl-period">2021 · 1개월</span>
+      <span class="tl-period">2021<span class="tl-duration">약 1개월</span></span>
       <div class="tl-content">
         <h3><a href="project-whodunit.html" class="cert-link">Whodunit</a></h3>
         <p class="tl-company">실감형 1인칭 추리 게임 · Team Cipher · 팀 4명 (메인 기획 / 프로그래밍 담당)</p>
@@ -476,7 +472,7 @@
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2021 · 2 — 3주</span>
+      <span class="tl-period">2021<span class="tl-duration">약 2 — 3주</span></span>
       <div class="tl-content">
         <h3><a href="project-hdrp-metro.html" class="cert-link">Unity HDRP Metro</a></h3>
         <p class="tl-company">서울 교통공사 2호선 2000호대 VVVF 전동차 객실 HDRP 재현 · 1인 개발</p>
@@ -491,7 +487,7 @@
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2020.06 — 2020.08</span>
+      <span class="tl-period">2020.06 — 2020.08<span class="tl-duration">약 2개월</span></span>
       <div class="tl-content">
         <h3><a href="project-pacchan.html" class="cert-link">Pac-chan!</a></h3>
         <p class="tl-company">팩맨을 Unity-Chan!과 3D로 재해석한 모바일 게임 · 1인 개발 · Google Play 정식 출시</p>
@@ -511,7 +507,7 @@
   <section>
     <p class="sec-title">Education</p>
     <div class="timeline-item">
-      <span class="tl-period">2016.03 — 2022.09</span>
+      <span class="tl-period">2016.03 — 2022.09<span class="tl-duration">6년 6개월</span></span>
       <div class="tl-content">
         <h3>숭실대학교</h3>
         <p class="tl-company">컴퓨터학부</p>
@@ -549,9 +545,9 @@
   <section>
     <p class="sec-title">Activities</p>
     <div class="timeline-item">
-      <span class="tl-period">2016 — 2022</span>
+      <span class="tl-period">2016 — 2022<span class="tl-duration">약 6년</span></span>
       <div class="tl-content">
-        <h3><a href="https://cafe.naver.com/gammaru" target="_blank" class="cert-link">겜마루 (GAMMARU)</a></h3>
+        <h3><a href="https://gammaru.dev/" target="_blank" rel="noopener" class="cert-link">겜마루 (GAMMARU)</a></h3>
         <p class="tl-company">숭실대학교 게임 제작 중앙동아리 · 21기 입단 · 2017년 회장</p>
         <p class="tl-sub">게임 제작 공모전</p>
         <ul>
