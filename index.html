@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JANG.EIGUK — 게임 컨텐츠 프로그래머 포트폴리오</title>
+  <title>JANG.EIGUK — 게임 콘텐츠 프로그래머 포트폴리오</title>
 
   <!-- SEO -->
-  <meta name="description" content="장이국 (JANG.EIGUK) — 게임 컨텐츠 프로그래머 포트폴리오. 유나 엔진(Cocos2d-x 개조) 기반 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 제작. TypeScript · C++ · C# · GLSL · Unity · FMOD.">
+  <meta name="description" content="장이국 (JANG.EIGUK) — 글로벌 출시 서브컬처 게임에서 스토리·튜토리얼·메신저·결제·사운드 시스템을 설계하고 구현한 게임 콘텐츠 프로그래머.">
   <meta name="author" content="장이국 (JANG.EIGUK)">
   <meta name="keywords" content="게임 프로그래머, 게임 컨텐츠 프로그래머, Game Developer, Game Programmer, Unity, Cocos2d-x, TypeScript, 포트폴리오, JANG.EIGUK, 장이국">
   <link rel="canonical" href="https://unagi11.github.io/profile/">
@@ -14,8 +14,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://unagi11.github.io/profile/">
-  <meta property="og:title" content="JANG.EIGUK — 게임 컨텐츠 프로그래머">
-  <meta property="og:description" content="유나 엔진(Cocos2d-x 개조) 기반 멀티플랫폼 서브컬처 덱빌딩 게임을 만든 게임 컨텐츠 프로그래머 장이국의 포트폴리오.">
+  <meta property="og:title" content="JANG.EIGUK — 게임 콘텐츠 프로그래머">
+  <meta property="og:description" content="글로벌 출시 서브컬처 게임의 콘텐츠 시스템과 제작 도구를 설계하고 구현한 게임 콘텐츠 프로그래머 장이국의 포트폴리오.">
   <meta property="og:image" content="https://unagi11.github.io/profile/assets/profile-og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -24,8 +24,7 @@
   <meta property="og:site_name" content="JANG.EIGUK Portfolio">
 
   <!-- Theme Color -->
-  <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e0d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#245edb">
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="120x120" href="assets/favicon.png">
@@ -149,69 +148,6 @@
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 2rem;
-    }
-
-    /* AVAILABILITY BADGE */
-    .avail-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #059669;
-      background: rgba(5, 150, 105, 0.08);
-      border: 1px solid rgba(5, 150, 105, 0.25);
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .avail-badge {
-        color: #34d399;
-        background: rgba(52, 211, 153, 0.10);
-        border-color: rgba(52, 211, 153, 0.30);
-      }
-    }
-
-    .status-dot,
-    .avail-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10b981;
-      display: inline-block;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .status-dot {
-      margin-right: 0.4rem;
-      vertical-align: 1px;
-    }
-
-    .avail-dot::after,
-    .status-dot::after {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background: #10b981;
-      opacity: 0.5;
-      animation: availPulse 1.8s ease-out infinite;
-    }
-
-    @keyframes availPulse {
-      0%   { transform: scale(0.6); opacity: 0.55; }
-      100% { transform: scale(1.8); opacity: 0; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .avail-dot::after,
-      .status-dot::after { animation: none; opacity: 0.35; transform: scale(1.1); }
     }
 
     .hero-name {
@@ -654,15 +590,6 @@
     }
 
     /* CONTACT */
-    .contact-intro {
-      font-size: 1.5rem;
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1.4;
-      margin-bottom: 2.5rem;
-      max-width: 500px;
-    }
-
     .contact-links {
       display: flex;
       flex-direction: column;
@@ -731,21 +658,18 @@
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
+  <link rel="stylesheet" href="assets/retro.css">
 </head>
-<body>
+<body class="home-shell">
 
   <nav>
-    <a href="#hero" class="nav-logo">JANG.EIGUK</a>
+    <a href="#hero" class="nav-logo" aria-label="JANG.EIGUK 홈">JANG.EIGUK</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#career">Career</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#activities">Activities</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#projects" aria-label="Projects">Projects</a></li>
+      <li><a href="#career" aria-label="Career">Career</a></li>
+      <li><a href="#about" aria-label="About">About</a></li>
+      <li><a href="resume.html" aria-label="Resume">Resume</a></li>
+      <li><a href="#contact" aria-label="Contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -753,18 +677,74 @@
   <section id="hero">
     <div class="hero-content">
       <p class="hero-label">Game Content Programmer · 성남시, 경기도</p>
-      <span class="avail-badge" aria-label="현재 이직을 열어두고 있습니다">
-        <span class="avail-dot" aria-hidden="true"></span>
-        Available · Open to offers
-      </span>
-      <h1 class="hero-name">장이국</h1>
-      <p class="hero-tagline">게임 컨텐츠 프로그래머</p>
+      <p class="availability-note">현재 이직 제안을 받고 있습니다.</p>
+      <h1 class="hero-name" aria-label="장이국">장이국</h1>
+      <p class="hero-tagline" aria-label="글로벌 출시 게임의 콘텐츠 시스템과 제작 파이프라인을 설계하고 구현합니다.">글로벌 출시 게임의 콘텐츠 시스템과<br>제작 파이프라인을 설계하고 구현합니다.</p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-filled">View Projects</a>
-        <a href="#contact" class="btn">Get in Touch</a>
+        <a href="#projects" class="btn btn-filled" aria-label="View Projects">View Projects</a>
+        <a href="#contact" class="btn" aria-label="Get in Touch">Get in Touch</a>
       </div>
+      <dl class="hero-stats" aria-label="주요 경력 요약">
+        <div><dt>Experience</dt><dd>3년 8개월</dd></div>
+        <div><dt>Shipped</dt><dd>글로벌 라이브 타이틀</dd></div>
+        <div><dt>Platforms</dt><dd>Android · iOS · PC</dd></div>
+      </dl>
     </div>
     <img src="assets/profile.jpg" alt="장이국" class="hero-photo">
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="sec-label">Selected Work</p>
+    <div class="projects-list">
+
+      <article class="project-item project-featured">
+        <a class="project-media" href="project-czn.html" aria-label="카오스 제로 나이트메어 프로젝트 보기">
+          <img src="assets/project-czn-thumb.jpg" alt="카오스 제로 나이트메어 작업 영상" loading="eager">
+        </a>
+        <p class="project-num">01 · SHIPPED TITLE</p>
+        <h3><a href="project-czn.html">카오스 제로 나이트메어<span class="arrow">↗</span></a></h3>
+        <p>글로벌 출시 서브컬처 덱빌딩 게임. 스토리·튜토리얼·메신저 시스템과 제작 도구를 설계하고, 결제·사운드·다국어 영상까지 사용자 경험 전반을 구현.</p>
+        <p class="project-meta">2022.08 — 2026.04 · Game Content Programmer · 글로벌 출시 및 라이브 운영</p>
+        <div class="project-tags">
+          <span class="tag">유나 엔진</span><span class="tag">TypeScript</span><span class="tag">Spine</span><span class="tag">FMOD</span>
+        </div>
+      </article>
+
+      <article class="project-item">
+        <a class="project-media" href="project-whodunit.html" aria-label="Whodunit 프로젝트 보기">
+          <img src="assets/project-whodunit-thumb.jpg" alt="Whodunit 게임 영상" loading="lazy">
+        </a>
+        <p class="project-num">02 · TEAM PROJECT</p>
+        <h3><a href="project-whodunit.html">Whodunit<span class="arrow">↗</span></a></h3>
+        <p>논리적 추론과 단서만으로 살인 사건을 추리하는 실감형 1인칭 추리 게임. 오브젝트 인터랙션 시스템 및 커스텀 셰이더 제작.</p>
+        <p class="project-meta">2021 · 1개월 · 팀 4명</p>
+        <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Shader Graph</span></div>
+      </article>
+
+      <article class="project-item">
+        <a class="project-media" href="project-hdrp-metro.html" aria-label="Unity HDRP Metro 프로젝트 보기">
+          <img src="assets/project-metro-thumb.jpg" alt="Unity HDRP Metro 영상" loading="lazy">
+        </a>
+        <p class="project-num">03 · SOLO PROJECT</p>
+        <h3><a href="project-hdrp-metro.html">Unity HDRP Metro<span class="arrow">↗</span></a></h3>
+        <p>서울교통공사 2호선 전동차 객실을 HDRP로 재현한 1인 프로젝트. 모델링·텍스처 제작부터 라이팅과 1인칭 이동 연출까지 전 과정 담당.</p>
+        <p class="project-meta">2021 · 2 — 3주 · 1인 개발</p>
+        <div class="project-tags"><span class="tag">Unity HDRP</span><span class="tag">Maya</span><span class="tag">Substance Painter</span></div>
+      </article>
+
+      <article class="project-item">
+        <a class="project-media" href="project-pacchan.html" aria-label="Pac-chan 프로젝트 보기">
+          <img src="assets/project-pacchan-thumb.jpg" alt="Pac-chan 게임 영상" loading="lazy">
+        </a>
+        <p class="project-num">04 · SOLO PROJECT</p>
+        <h3><a href="project-pacchan.html">Pac-chan!<span class="arrow">↗</span></a></h3>
+        <p>팩맨을 Unity-Chan!과 3D로 재해석한 모바일 게임. Coroutine FSM 기반 Ghost AI를 구현하고 Google Play에 출시.</p>
+        <p class="project-meta">2020.06 — 2020.08 · 1인 개발</p>
+        <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Google Play</span></div>
+      </article>
+
+    </div>
   </section>
 
   <!-- ABOUT -->
@@ -773,13 +753,13 @@
     <div class="about-grid">
       <div class="about-text">
         <p>
-          유저가 몰입할 수 있는, <strong>이야기가 있는 게임</strong>을 만들고 싶습니다.
+          유저가 몰입할 수 있는 <strong>이야기와 경험을 시스템으로 구현하는 게임 콘텐츠 프로그래머</strong>입니다.
         </p>
         <p>
-          유나 엔진(Cocos2d-x 개조) 기반의 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 제작에 참여하여 스토리 재생 시스템부터 튜토리얼, 결제 SDK 연동, Tokyo Game Show 시연용 버전까지 유저가 경험하는 게임 플로우 전반을 설계하고 구현했습니다.
+          약 3년 8개월간 유나 엔진(Cocos2d-x 개조) 기반의 멀티플랫폼(Android · iOS · PC) 서브컬처 덱빌딩 게임 개발에 참여했습니다. 스토리·튜토리얼·메신저 같은 콘텐츠 시스템부터 결제 SDK, 사운드 자동화, 다국어 영상 송출까지 사용자 경험과 제작 흐름 전반의 문제를 해결했습니다.
         </p>
         <p>
-          유튜브, 게임 방송, 영화, 인디게임, 콘솔게임, 서브컬처 등 다양한 미디어를 즐기며, 유저 관점의 경험을 개발에 녹이는 것을 중요하게 생각합니다.
+          기획·시나리오·아트·사운드 직군이 반복해서 사용할 수 있는 구조를 만들고, 실제 출시와 라이브 운영 과정에서 발견된 문제를 끝까지 개선하는 것을 중요하게 생각합니다.
         </p>
       </div>
       <div class="about-meta">
@@ -790,7 +770,7 @@
           </div>
           <div class="meta-row">
             <dt>Experience</dt>
-            <dd>~4 Years</dd>
+            <dd>3 Years 8 Months</dd>
           </div>
           <div class="meta-row">
             <dt>Focus</dt>
@@ -798,7 +778,7 @@
           </div>
           <div class="meta-row">
             <dt>Languages</dt>
-            <dd>한국어 · English (TOEIC 715) · 日本語 (JLPT N3)</dd>
+            <dd>한국어 · English · 日本語</dd>
           </div>
         </dl>
       </div>
@@ -811,33 +791,30 @@
 
     <div class="skills-grid">
       <dl class="skill-group">
-        <dt>Languages</dt>
+        <dt>Primary</dt>
         <dd>
           <span class="tag">TypeScript</span>
           <span class="tag">C++</span>
-          <span class="tag">C#</span>
-          <span class="tag">Python</span>
-          <span class="tag">GLSL</span>
+          <span class="tag">Cocos2d-x</span>
         </dd>
       </dl>
       <dl class="skill-group">
-        <dt>Engine / Tools</dt>
+        <dt>Content / Tools</dt>
         <dd>
-          <span class="tag">Cocos2d-x</span>
-          <span class="tag">Unity</span>
           <span class="tag">Spine</span>
           <span class="tag">FMOD Studio</span>
+          <span class="tag">GLSL</span>
+          <span class="tag">Python</span>
         </dd>
       </dl>
       <dl class="skill-group">
-        <dt>Infra / DB</dt>
+        <dt>Additional Experience</dt>
         <dd>
+          <span class="tag">Unity</span>
+          <span class="tag">C#</span>
           <span class="tag">MySQL</span>
           <span class="tag">Redis</span>
-          <span class="tag">SVN</span>
           <span class="tag">Git</span>
-          <span class="tag">Mercurial</span>
-          <span class="tag">Firebase</span>
         </dd>
       </dl>
     </div>
@@ -893,67 +870,6 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <p class="sec-label">Projects</p>
-    <div class="projects-list">
-
-      <div class="project-item">
-        <p class="project-num">01</p>
-        <h3><a href="project-czn.html">카오스 제로 나이트메어<span class="arrow">↗</span></a></h3>
-        <p>멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임. 스토리 · 튜토리얼 · 전투 임무 · 메신저 · 심리 상담 · 특전 · 사운드 등 컨텐츠 전반 제작.</p>
-        <p class="project-meta">2022.08 — 2026.04 · 회사 프로젝트 · 글로벌 출시 2025.10.22</p>
-        <div class="project-tags">
-          <span class="tag">유나 엔진 (Cocos2d-x 개조)</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Spine</span>
-          <span class="tag">FMOD</span>
-          <span class="tag">MySQL</span>
-          <span class="tag">Redis</span>
-        </div>
-      </div>
-
-      <div class="project-item">
-        <p class="project-num">02</p>
-        <h3><a href="project-whodunit.html">Whodunit<span class="arrow">↗</span></a></h3>
-        <p>논리적 추론과 단서만으로 살인 사건을 추리하는 실감형 1인칭 추리 게임. 오브젝트 인터랙션 시스템 및 커스텀 셰이더 제작.</p>
-        <p class="project-meta">2021 · 1개월 · 팀 4명</p>
-        <div class="project-tags">
-          <span class="tag">Unity</span>
-          <span class="tag">C#</span>
-          <span class="tag">Shader Graph</span>
-        </div>
-      </div>
-
-      <div class="project-item">
-        <p class="project-num">03</p>
-        <h3><a href="project-hdrp-metro.html">Unity HDRP Metro<span class="arrow">↗</span></a></h3>
-        <p>서울 교통공사 2호선 전동차 객실을 HDRP로 재현한 프로젝트. Normal Map 베이킹, 1인칭 컨트롤러, 카메라 흔들림 효과 구현.</p>
-        <p class="project-meta">2021 · 2 — 3주 · 1인 개발</p>
-        <div class="project-tags">
-          <span class="tag">Unity HDRP</span>
-          <span class="tag">Maya</span>
-          <span class="tag">ZBrush</span>
-          <span class="tag">Substance Painter</span>
-        </div>
-      </div>
-
-      <div class="project-item">
-        <p class="project-num">04</p>
-        <h3><a href="project-pacchan.html">Pac-chan!<span class="arrow">↗</span></a></h3>
-        <p>팩맨을 Unity-Chan!과 3D로 재해석한 모바일 게임. Ghost AI(Coroutine FSM), 서드파티 조이스틱 컨트롤러 구현. Google Play 정식 출시.</p>
-        <p class="project-meta">2020.06 — 2020.08 · 1인 개발</p>
-        <div class="project-tags">
-          <span class="tag">Unity</span>
-          <span class="tag">C#</span>
-          <span class="tag">Blender</span>
-          <span class="tag">Google Play</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
   <!-- CAREER -->
   <section id="career">
     <p class="sec-label">Career</p>
@@ -965,17 +881,13 @@
           <h3>SuperCreative</h3>
           <p class="tl-company">스마일게이트 계열사 · Game Content Programmer · 카오스 제로 나이트메어</p>
           <ul class="tl-list">
-            <li>스토리 플레이어 / 뷰어 툴 제작</li>
-            <li>스토리 컨텐츠 / 스토리맵 시스템 제작</li>
-            <li>튜토리얼 시스템 제작</li>
-            <li>Tencent 협업 · Midas IAP 결제 연동 · 중국 CBT 대응</li>
-            <li>Tokyo Game Show 시연용 버전 담당</li>
-            <li>메신저 시스템 (유니그램) 제작</li>
-            <li>심리 상담 시스템 제작</li>
-            <li>캐릭터 특전 시스템 제작</li>
-            <li>사운드 시스템 / FMOD 스크립팅</li>
-            <li>인게임 쉐이더 제작 (GLSL · 포스트프로세싱)</li>
-            <li>인게임 영상 음성, 자막 현지화 기능 제작</li>
+            <li>다양한 스토리 콘텐츠가 공유하는 재생 구조와 시나리오 뷰어 도구 설계·구현</li>
+            <li>인게임·아웃게임 튜토리얼과 스토리맵 등 주요 사용자 흐름 개발</li>
+            <li>Tencent와 협업해 Midas IAP 결제를 연동하고 중국 2차 CBT QA 대응</li>
+            <li>Tokyo Game Show 시연 빌드 제작과 시연 환경에 맞춘 플레이 흐름 개선 담당</li>
+            <li>메신저·심리 상담·캐릭터 특전 등 서브컬처 콘텐츠 시스템 개발</li>
+            <li>Python·FMOD 기반 음성 제작 자동화와 GLSL 포스트프로세싱 구현</li>
+            <li>한국어·일본어·영어·중국어 음성과 자막을 조합하는 영상 송출 기능 개발</li>
           </ul>
         </div>
       </div>
@@ -1012,34 +924,6 @@
     </div>
   </section>
 
-  <!-- CERTIFICATES -->
-  <section id="certificates">
-    <p class="sec-label">Certificates</p>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="tl-period">2022.02</span>
-        <div class="tl-content">
-          <h3>운전면허 1종 보통</h3>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="tl-period">2022.01.13</span>
-        <div class="tl-content">
-          <h3>JLPT N3</h3>
-          <p class="tl-company">141 / 180 · 합격</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="tl-period">2021.10</span>
-        <div class="tl-content">
-          <h3>TOPCIT 374 (수준 2)</h3>
-          <p class="tl-company">소프트웨어 역량 검정</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ACTIVITIES -->
   <section id="activities">
     <p class="sec-label">Activities</p>
@@ -1065,29 +949,12 @@
           </ul>
         </div>
       </div>
-      <div class="timeline-item">
-        <span class="tl-period">2013 — 2015</span>
-        <div class="tl-content">
-          <h3><a href="https://cafe.naver.com/ptcomputer" target="_blank" class="inline-link">CPU</a></h3>
-          <p class="tl-company">평택고등학교 프로그래밍 동아리</p>
-          <p class="tl-sub">게임 제작 공모전</p>
-          <ul class="tl-list">
-            <li>2013년 동아리 경진대회 — 방탈출 게임 출품 · 전시 (<a href="https://youtu.be/9NBXV2DcF0c" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
-            <li>2014년 동아리 경진대회 — 추리 게임 출품 · 전시</li>
-          </ul>
-          <p class="tl-sub">동아리 활동</p>
-          <ul class="tl-list">
-            <li>프로그래밍 기초 학습 및 스터디 활동</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
     <p class="sec-label">Contact</p>
-    <p class="contact-intro">편하게 연락 부탁드립니다.</p>
     <div class="contact-links">
       <a href="mailto:unagi11@naver.com" class="contact-link">
         <span>Email</span>
@@ -1114,7 +981,7 @@
 
   <footer>
     <p>© 2026 JANG.EIGUK</p>
-    <p id="last-updated">Last updated 2026.04.22</p>
+    <p id="last-updated">Last updated 2026.08.21</p>
   <script>
     (function () {
       var el = document.getElementById('last-updated');

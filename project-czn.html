@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#245edb">
   <title>카오스 제로 나이트메어 — 장이국</title>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="120x120" href="assets/favicon.png">
@@ -251,8 +252,9 @@
       .header-meta { flex-direction: column; gap: 0.25rem; }
     }
   </style>
+  <link rel="stylesheet" href="assets/retro.css">
 </head>
-<body>
+<body class="document-shell">
 
   <div class="btn-bar">
     <a href="index.html" class="btn-back">&larr; Back</a>
@@ -264,9 +266,9 @@
     <h1>카오스 제로 나이트메어</h1>
     <p class="subtitle">SuperCreative &middot; Game Content Programmer &middot; 2022.08 &mdash; 2026.04</p>
     <div class="header-meta">
-      <span>멀티플랫폼 (AOS &middot; iOS &middot; PC) 서브컬처 덱빌딩 게임</span>
+      <span>멀티플랫폼 (Android &middot; iOS &middot; PC) 서브컬처 덱빌딩 게임</span>
       <span>글로벌 출시 2025.10.22</span>
-      <span>총 590건 이슈 처리</span>
+      <span>개발·개선 이슈 395건 수행</span>
     </div>
     <div class="tags">
       <span class="tag">유나 엔진 (Cocos2d-x 개조)</span>
@@ -278,9 +280,21 @@
     </div>
   </header>
 
+  <!-- OVERVIEW -->
+  <section>
+    <p class="sec-title">Overview</p>
+    <p class="summary">
+      약 3년 8개월간 개발·글로벌 출시·라이브 운영에 참여하며, 유저가 직접 경험하는 콘텐츠 시스템과 제작 파이프라인을 함께 담당했습니다.
+      스토리·튜토리얼·메신저·심리 상담·캐릭터 특전부터 결제·사운드·다국어 영상 송출까지 여러 직군과 맞닿는 기능을 설계하고 구현했습니다.
+    </p>
+    <p class="summary">
+      사내 이슈 기준 개발·개선 업무 395건을 수행했으며, 2026년 중국 2차 CBT를 위한 Midas IAP 연동은 Script·Server·Client 3개 저장소에서 130건 이상의 커밋으로 별도 진행했습니다.
+    </p>
+  </section>
+
   <!-- STATS -->
   <section>
-    <p class="sec-title">Issues by Period</p>
+    <p class="sec-title">Development Issues by Period</p>
     <table class="stats-table">
       <thead>
         <tr><th>Period</th><th>Count</th></tr>
@@ -294,70 +308,65 @@
         <tr><td>2025 H1</td><td>85</td></tr>
         <tr><td>2025 H2</td><td>77</td></tr>
         <tr><td>2026 H1</td><td>3</td></tr>
-        <tr class="highlight"><td>Total</td><td>590</td></tr>
+        <tr class="highlight"><td>Total</td><td>395</td></tr>
       </tbody>
     </table>
   </section>
 
   <!-- CORE SYSTEMS -->
   <section>
-    <p class="sec-title">Core Systems</p>
+    <p class="sec-title">Selected Contributions</p>
 
     <div class="system-block">
       <h4>스토리 플레이어</h4>
       <ul class="work-list">
-        <li>StoryPlayArgs 인터페이스 설계 (약 40개 필드)</li>
-        <li>playCut() 8단계 실행 순서 구현</li>
-        <li>StoryActor 클래스: 노드 계층, 렌더 레이어, 포트레이트, 이펙트</li>
-        <li>스토리 이펙트 4축 구조, 포스트프로세싱 (블러/글리치/환상)</li>
-        <li>선택지 시스템: 루트 분기, 심리상담, 메신저 분기</li>
-        <li>데이터 구조: story_sub, actor, list_story_resource 테이블 설계</li>
-        <li>특전 (LiveEvent): 다중 스파인 레이어 모델</li>
-        <li>SSRStoryViewer: 시나리오 라이터용 뷰어 도구 제작</li>
+        <li>약 40개 재생 옵션을 StoryPlayArgs로 통합하고, playCut()의 8단계 실행 흐름을 설계</li>
+        <li>StoryActor 계층에서 렌더 레이어·포트레이트·이펙트를 일관되게 관리</li>
+        <li>블러·글리치·환상 등 포스트프로세싱과 선택지 기반 분기를 공통 재생 구조에 연결</li>
+        <li>시나리오 라이터가 결과를 직접 확인할 수 있는 SSRStoryViewer 제작</li>
       </ul>
     </div>
 
     <div class="system-block">
-      <h4>스토리 컨텐츠</h4>
+      <h4>스토리 콘텐츠</h4>
       <ul class="work-list">
-        <li>노드 재생 플로우: STORY, TEXT, CHAOS, SIMULATION, EXPERIENCE 타입별 처리</li>
-        <li>데이터 계층: 메인스토리/임무/트라우마코드/디재스터/이벤트 &rarr; 챕터 &rarr; 노드</li>
-        <li>에피소드 UI 매핑: 페이지별/노드 타입별 UI 클래스 분류</li>
-        <li>페이지 상속 구조: PageStoryBase &rarr; PageStoryCommon &rarr; 4개 컨텐츠 페이지</li>
+        <li>STORY·TEXT·CHAOS·SIMULATION·EXPERIENCE 노드를 타입별로 재생하는 흐름 구현</li>
+        <li>메인 스토리·임무·트라우마 코드·디재스터·이벤트를 챕터와 노드 계층으로 구성</li>
+        <li>공통 페이지 구조를 기반으로 콘텐츠별 UI와 동작을 확장할 수 있도록 설계</li>
       </ul>
     </div>
 
     <div class="system-block">
       <h4>튜토리얼</h4>
       <ul class="work-list">
-        <li>TutorialSceneManager: 인게임 튜토리얼 씬 풀(TSP) 실행/관리</li>
-        <li>OutgameTutorial: 아웃게임 진입 시점 튜토리얼 시스템</li>
+        <li>인게임 튜토리얼 씬 풀의 실행·수명 주기를 관리하는 TutorialSceneManager 구현</li>
+        <li>아웃게임 진입 시점과 진행 상태를 처리하는 OutgameTutorial 구현</li>
       </ul>
     </div>
 
     <div class="system-block">
       <h4>사운드</h4>
       <ul class="work-list">
-        <li>Python VAD 도구: 음성 WAV에서 구간 추출 &rarr; JSON 저장</li>
-        <li>FMOD Studio 스크립팅: 보이스 이벤트 생성, 뱅크 분리, Clear 구간 마커</li>
+        <li>Python VAD 도구로 음성 WAV 구간 추출과 JSON 데이터 생성을 자동화</li>
+        <li>FMOD Studio 스크립팅으로 보이스 이벤트 생성·뱅크 분리·Clear 구간 마커 작업 지원</li>
         <li>BGM Ducking, PV 사운드 분리, 시스템 사운드 전반 개선</li>
         <li>립싱크 데이터 자동화 R&D 및 구현</li>
       </ul>
     </div>
 
     <div class="system-block">
-      <h4>Tencent 협업 · Midas IAP 결제 연동 (중국 CBT 대응)</h4>
+      <h4>Tencent 협업 · Midas IAP 결제 연동</h4>
       <ul class="work-list">
-        <li>Midas IAP 결제 연동: Script/Server/Client 3개 저장소, 130건+ 커밋</li>
-        <li>크리스탈 구매/결제 호출, 에테르 보충, 시즌패스 구매 등 상용화 결제 전반</li>
-        <li>중국 2차 CBT 결제 에러 처리 및 QA 대응</li>
+        <li>Script·Server·Client 3개 저장소에서 130건 이상의 커밋으로 결제 흐름 연동</li>
+        <li>크리스탈 구매·에테르 보충·시즌패스 등 상품별 구매 흐름 구현</li>
+        <li>중국 2차 CBT 과정에서 결제 오류 처리와 Tencent 협업 QA 대응</li>
       </ul>
     </div>
 
     <div class="system-block">
       <h4>전투 임무 시스템</h4>
       <ul class="work-list">
-        <li>어비스 모드 / 광폭화 시스템 구현</li>
+        <li>어비스 모드·광폭화 시스템 구현</li>
         <li>전투 임무 6장 추가 구현, 승급 임무</li>
         <li>하드모드, 챕터 달성 보상, 별 보상 팝업</li>
       </ul>
@@ -369,9 +378,9 @@
         <iframe src="https://www.youtube.com/embed/Gb_2ndZgVz8" allowfullscreen></iframe>
       </div>
       <ul class="work-list">
-        <li>로비 특전 배경화면 획득/사운드/터치 적용</li>
+        <li>로비 특전의 배경화면 획득·사운드·터치 상호작용 구현</li>
         <li>영상 특전 애니 클립, 특전 외출 기능</li>
-        <li>다중 스파인 레이어 모델 (LiveEvent/LiveEventBG)</li>
+        <li>여러 Spine 연출을 조합하는 LiveEvent·LiveEventBG 레이어 구조 구현</li>
       </ul>
     </div>
 
@@ -382,14 +391,14 @@
       </div>
       <ul class="work-list">
         <li>선택지 구조 변경, 상담 기록 보상 개선</li>
-        <li>캐릭터별 밤/낮 마스킹 연출, 신작 적용 툴</li>
+        <li>캐릭터별 밤·낮 마스킹 연출과 콘텐츠 적용 지원 도구 구현</li>
       </ul>
     </div>
 
     <div class="system-block">
       <h4>인게임 영상 자막 송출</h4>
       <ul class="work-list">
-        <li>다국어 보이스+자막 조합 기능 (한/일/영/중번 조합)</li>
+        <li>한국어·일본어·영어·중국어 번체 음성과 자막을 독립적으로 조합하는 송출 기능 구현</li>
       </ul>
     </div>
 
@@ -399,15 +408,15 @@
         <iframe src="https://www.youtube.com/embed/gLlF7NCG1-E" allowfullscreen></iframe>
       </div>
       <ul class="work-list">
-        <li>메신저 시스템 개발 구현 및 폴리싱</li>
-        <li>즐겨찾기, 카테고리 정렬</li>
+        <li>메신저 시스템의 메시지 재생과 사용자 인터페이스 구현·개선</li>
+        <li>즐겨찾기와 카테고리 정렬 기능 구현</li>
       </ul>
     </div>
   </section>
 
   <!-- TIMELINE -->
   <section>
-    <p class="sec-title">Work Timeline</p>
+    <p class="sec-title">Additional Work Timeline</p>
 
     <div class="period">
       <div class="period-header">
@@ -538,7 +547,7 @@
       </ul>
       <p class="work-category">메신저 시스템</p>
       <ul class="work-list">
-        <li>개발 구현, 기능 폴리싱, 즐겨찾기 저장소 변경</li>
+        <li>메시지 재생과 UI 구현·개선, 즐겨찾기 저장 구조 변경</li>
       </ul>
       <p class="work-category">Tokyo Game Show 시연용 버전 담당</p>
       <ul class="work-list">
