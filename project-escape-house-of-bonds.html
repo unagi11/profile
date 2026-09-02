@@ -294,17 +294,15 @@
     <p class="sec-title">Project Info</p>
     <table class="meta-table">
       <tbody>
-        <tr><th>Period</th><td>2026.05 — Present</td></tr>
+        <tr><th>Period</th><td>2026.05 — 2026.09</td></tr>
         <tr><th>Team</th><td>1인 개발</td></tr>
         <tr><th>My Role</th><td>기획 · 시나리오 · 프로그래밍 · 아트 · 사운드 · QA · 퍼블리싱</td></tr>
-        <tr><th>Platform</th><td>Steam · Windows · iOS · Android · STOVE</td></tr>
-        <tr><th>Engine</th><td>Unity 6000.3.8f1 · URP</td></tr>
+        <tr><th>Platforms</th><td>Windows · iOS · Android</td></tr>
         <tr><th>Languages</th><td>한국어 · English · 日本語</td></tr>
-        <tr><th>Tech Stack</th><td>Unity 6 · C# · URP · Input System · UGUI · Unity Test Framework</td></tr>
-        <tr><th>Tools</th><td>Aseprite · Pixel Perfect · TextMesh Pro</td></tr>
-        <tr><th>Workflow</th><td>Codex · Unity CLI / Pipeline · AGENT.md · 저장소 전용 스킬</td></tr>
-        <tr><th>Platform SDK</th><td>Steamworks.NET · Google Play Games · Game Center / iCloud · STOVE</td></tr>
-        <tr><th>Release</th><td>GitHub Actions · Steam · TestFlight · Google Play</td></tr>
+        <tr><th>Engine &amp; Code</th><td>Unity 6000.3.8f1 · C# · URP</td></tr>
+        <tr><th>UI &amp; Tools</th><td>UGUI · Input System · Aseprite · Pixel Perfect · TextMesh Pro</td></tr>
+        <tr><th>QA &amp; CI</th><td>Unity Test Framework · Unity CLI / Pipeline · GitHub Actions</td></tr>
+        <tr><th>Platform Services</th><td>Steamworks.NET · Game Center / iCloud · Google Play Games · STOVE</td></tr>
       </tbody>
     </table>
   </section>
@@ -339,6 +337,15 @@
         <li>레이어 구조·좌표·정렬 순서를 읽어 <code>SpriteRenderer</code> 계층을 자동 생성하고 기존 씬 오브젝트를 유지하며 갱신</li>
         <li>Aseprite 태그를 반복·일회성 애니메이션과 프레임별 위치·재생 시간 데이터로 변환해 방 상태와 대사 연출에서 재생</li>
         <li>모든 방 원본을 한 번에 내보내고 현재 씬까지 갱신하는 일괄 리프레시 도구 구축</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>픽셀아트 화면을 위한 커스텀 쉐이더·전환 연출</h4>
+      <ul class="work-list">
+        <li>방 화면을 표시하는 UI <code>RawImage</code>에 블러, CRT 플리커·노이즈, 제한 팔레트 디더링, 글리치, 색수차·왜곡을 한 패스로 합성하는 포스트 이펙트 쉐이더 구현</li>
+        <li>Default·Warn·Danger·Drunken 상태를 <code>ScriptableObject</code> 프로필로 분리하고, 체력 변화와 대사 TSV의 <code>shader</code> 값에 따라 화면 효과와 BGM 피치를 부드럽게 보간</li>
+        <li>공유 머티리얼을 직접 변경하지 않도록 런타임 인스턴스를 생성하고, 실제 포스트 이펙트가 적용된 화면을 캡처해 픽셀 해상도를 단계적으로 낮추거나 복원하는 전환 효과 구성</li>
       </ul>
     </div>
 
@@ -386,6 +393,7 @@
   <section>
     <p class="sec-title">Deliverables</p>
     <ul class="link-list">
+      <li><a href="https://github.com/unagi11/EscapeUnity-demo" target="_blank" rel="noopener">Demo GitHub Repository</a></li>
       <li><a href="https://unagi11.github.io/EscapeUnity-demo/" target="_blank" rel="noopener">WebGL Demo</a></li>
       <li><a href="https://store.steampowered.com/app/4719560/Escape_House_of_Bonds/" target="_blank" rel="noopener">Steam Store</a></li>
       <li><a href="https://youtu.be/Ct5GcwSQ2rg" target="_blank" rel="noopener">Official Trailer</a></li>
