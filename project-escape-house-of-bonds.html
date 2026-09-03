@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#245edb">
+  <title>탈출! 인연의 집 — 장이국</title>
+  <meta name="description" content="1인 개발로 완성한 픽셀아트 방탈출 어드벤처 탈출! 인연의 집의 게임 시스템, 자동 QA, 플랫폼 출시 사례.">
+  <link rel="canonical" href="https://unagi11.github.io/profile/project-escape-house-of-bonds.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unagi11.github.io/profile/project-escape-house-of-bonds.html">
+  <meta property="og:title" content="탈출! 인연의 집 — 1인 개발 프로젝트">
+  <meta property="og:description" content="기획·시나리오·프로그래밍·아트·사운드·QA·플랫폼 출시까지 단독으로 구축한 방탈출 어드벤처.">
+  <meta property="og:image" content="https://unagi11.github.io/profile/assets/project-escape-trailer.jpg">
+  <meta property="og:image:alt" content="탈출! 인연의 집 공식 트레일러 장면">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="120x120" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text: #111110;
+      --muted: #6b6a65;
+      --border: #d0cfc8;
+      --tag-bg: #ebebe7;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      color: var(--text);
+      background: #fff;
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .btn-bar {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 10;
+      display: flex;
+      gap: .75rem;
+    }
+
+    .btn-back,
+    .btn-ext {
+      padding: .5rem 1rem;
+      color: var(--text);
+      background: #fff;
+      border: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-decoration: none;
+    }
+
+    .btn-ext { color: #fff; background: var(--text); border-color: var(--text); }
+
+    header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--text);
+    }
+
+    header h1 {
+      margin-bottom: .25rem;
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: -.03em;
+    }
+
+    header .subtitle {
+      margin-bottom: 1rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 2rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+    .tag {
+      display: inline-block;
+      padding: .3rem .6rem;
+      color: var(--muted);
+      background: var(--tag-bg);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .02em;
+    }
+
+    section { margin-bottom: 2.5rem; }
+    .sec-title {
+      margin-bottom: 1.25rem;
+      padding-bottom: .4rem;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .summary {
+      margin-bottom: .5rem;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .system-block { margin-bottom: 1.5rem; }
+    .system-block h4 { margin-bottom: .4rem; font-size: 13px; font-weight: 500; }
+    .work-list { padding: 0; list-style: none; }
+    .work-list li {
+      position: relative;
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .work-list li::before { content: '\2014'; position: absolute; left: 0; color: var(--border); }
+
+    .meta-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .meta-table th {
+      width: 40%;
+      padding: .5rem 0;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    .meta-table td { padding: .5rem 0; color: var(--muted); border-bottom: 1px solid var(--border); }
+
+    .trailer-player {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin: .75rem 0 .25rem;
+      overflow: hidden;
+      background: #171714;
+      border: 1px solid var(--border);
+    }
+
+    .trailer-player iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .trailer-poster {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      overflow: hidden;
+      background: #171714;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .trailer-poster img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.82) saturate(.9);
+      transition: filter .25s ease, transform .35s ease;
+    }
+
+    .trailer-poster::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, .02), rgba(0, 0, 0, .2));
+    }
+
+    .trailer-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      display: grid;
+      width: 68px;
+      height: 68px;
+      place-items: center;
+      color: #fff;
+      background: rgba(23, 23, 20, .86);
+      border: 1px solid rgba(255, 255, 255, .82);
+      border-radius: 50%;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, .3);
+      transform: translate(-50%, -50%);
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .trailer-play::before {
+      content: '';
+      width: 0;
+      height: 0;
+      margin-left: 4px;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 13px solid currentColor;
+    }
+
+    .trailer-poster:hover img { filter: brightness(.94) saturate(1); transform: scale(1.012); }
+    .trailer-poster:hover .trailer-play { background: var(--editorial-blue); transform: translate(-50%, -50%) scale(1.04); }
+    .trailer-poster:focus-visible { outline: 3px solid var(--editorial-blue); outline-offset: -3px; }
+
+    .link-list { padding: 0; list-style: none; font-family: var(--mono); font-size: 12px; }
+    .link-list li { padding: .25rem 0; }
+    .link-list a { color: var(--text); border-bottom: 1px solid var(--border); text-decoration: none; }
+    .link-list a:hover { border-bottom-color: var(--text); }
+
+    @media (max-width: 560px) {
+      .header-meta { flex-direction: column; gap: .25rem; }
+    }
+
+    @media print {
+      .btn-bar { display: none; }
+      body { padding: 0; }
+      .trailer-player { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/retro.css">
+  <script src="assets/embedded-page.js" defer></script>
+</head>
+<body class="document-shell">
+
+  <div class="btn-bar">
+    <a href="index.html" class="btn-back">&larr; Back</a>
+  </div>
+
+  <header>
+    <h1>탈출! 인연의 집</h1>
+    <p class="subtitle">Solo Project &middot; 1인 개발 &middot; 2026</p>
+    <div class="header-meta">
+      <span>레트로풍 방탈출 어드벤처 게임</span>
+      <span>Steam · iOS · Android · STOVE</span>
+    </div>
+    <div class="tags">
+      <span class="tag">Unity 6</span>
+      <span class="tag">C#</span>
+      <span class="tag">Aseprite</span>
+      <span class="tag">Codex</span>
+      <span class="tag">Unity CLI</span>
+      <span class="tag">Steamworks</span>
+      <span class="tag">Google Play Games</span>
+      <span class="tag">Game Center</span>
+    </div>
+  </header>
+
+  <section>
+    <p class="sec-title">Overview</p>
+    <p class="summary">
+      레트로풍 방탈출 어드벤처 게임
+    </p>
+    <p class="summary">
+      게임 기획, 시나리오, 프로그래밍, 픽셀아트, 사운드, 한국어·영어·일본어 현지화, 자동 QA 도구,
+      플랫폼 연동과 스토어 출시 업무까지 전 과정을 단독으로 설계하고 구현했습니다.
+    </p>
+    <div class="trailer-player" data-trailer-player>
+      <button class="trailer-poster" type="button" data-trailer-play aria-label="탈출! 인연의 집 공식 트레일러 재생">
+        <img src="assets/project-escape-trailer.jpg" alt="탈출! 인연의 집 공식 트레일러 장면" loading="eager">
+        <span class="trailer-play" aria-hidden="true"></span>
+      </button>
+      <noscript><a href="https://youtu.be/Ct5GcwSQ2rg">YouTube에서 공식 트레일러 보기</a></noscript>
+    </div>
+    <p class="video-caption">공식 트레일러</p>
+  </section>
+
+  <section>
+    <p class="sec-title">Project Info</p>
+    <table class="meta-table">
+      <tbody>
+        <tr><th>Period</th><td>2026.05 — 2026.09</td></tr>
+        <tr><th>Team</th><td>1인 개발</td></tr>
+        <tr><th>My Role</th><td>기획 · 시나리오 · 프로그래밍 · 아트 · 사운드 · QA · 퍼블리싱</td></tr>
+        <tr><th>Platforms</th><td>Windows · iOS · Android</td></tr>
+        <tr><th>Languages</th><td>한국어 · English · 日本語</td></tr>
+        <tr><th>Engine &amp; Code</th><td>Unity 6000.3.8f1 · C# · URP</td></tr>
+        <tr><th>UI &amp; Tools</th><td>UGUI · Input System · Aseprite · Pixel Perfect · TextMesh Pro</td></tr>
+        <tr><th>QA &amp; CI</th><td>Unity Test Framework · Unity CLI / Pipeline · GitHub Actions</td></tr>
+        <tr><th>Platform Services</th><td>Steamworks.NET · Game Center / iCloud · Google Play Games · STOVE</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <p class="sec-title">My Contribution</p>
+
+    <div class="system-block">
+      <h4>데이터 중심 스토리·다국어 시스템</h4>
+      <ul class="work-list">
+        <li>대사, 화자, 아이템, 정보, 튜토리얼, 도전과제를 TSV 데이터로 분리하고 공용 파서와 타입 안전 로더 구현</li>
+        <li>대사 행에서 배경·초상화·BGM·화면 전환·아이템 변화·플래그·엔딩 크레딧을 함께 제어하는 효과 토큰 구조 설계</li>
+        <li>한국어·영어·일본어 텍스트와 스프라이트 현지화, 에디터 ID 미리보기와 누락 검사 도구 구축</li>
+        <li>플레이 기록과 현재 회차의 증거·선택을 조합해 A–E 다섯 엔딩으로 분기</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>방 탐색·아이템·퍼즐 구조</h4>
+      <ul class="work-list">
+        <li>오브젝트별 조건·결과를 직렬화한 상호작용 규칙과 역할별 특수 행동 핸들러로 방 진행 로직 분리</li>
+        <li>아이템 획득·선택·조합·분해, 정보 수집, 오브젝트 상태 저장과 복귀 흐름 구현</li>
+        <li>회차 seed에 따라 답과 순서가 달라지는 락픽, 체인 번호, 디지털 도어락 퍼즐 설계</li>
+        <li>픽셀 퍼펙트 방 화면, Aseprite 시트 애니메이션, 조명·후처리·화면 전환 효과를 하나의 탐색 흐름으로 연결</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>Aseprite 기반 방탈출 제작 환경</h4>
+      <ul class="work-list">
+        <li>Aseprite 원본을 CLI와 Lua 스크립트로 PNG 스프라이트 시트·JSON 메타데이터로 내보내고 Unity 에셋을 즉시 갱신</li>
+        <li>레이어 구조·좌표·정렬 순서를 읽어 <code>SpriteRenderer</code> 계층을 자동 생성하고 기존 씬 오브젝트를 유지하며 갱신</li>
+        <li>Aseprite 태그를 반복·일회성 애니메이션과 프레임별 위치·재생 시간 데이터로 변환해 방 상태와 대사 연출에서 재생</li>
+        <li>모든 방 원본을 한 번에 내보내고 현재 씬까지 갱신하는 일괄 리프레시 도구 구축</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>픽셀아트 화면을 위한 커스텀 쉐이더·전환 연출</h4>
+      <ul class="work-list">
+        <li>방 화면을 표시하는 UI <code>RawImage</code>에 블러, CRT 플리커·노이즈, 제한 팔레트 디더링, 글리치, 색수차·왜곡을 한 패스로 합성하는 포스트 이펙트 쉐이더 구현</li>
+        <li>Default·Warn·Danger·Drunken 상태를 <code>ScriptableObject</code> 프로필로 분리하고, 체력 변화와 대사 TSV의 <code>shader</code> 값에 따라 화면 효과와 BGM 피치를 부드럽게 보간</li>
+        <li>공유 머티리얼을 직접 변경하지 않도록 런타임 인스턴스를 생성하고, 실제 포스트 이펙트가 적용된 화면을 캡처해 픽셀 해상도를 단계적으로 낮추거나 복원하는 전환 효과 구성</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>QA 전용 DSL과 자동 플레이</h4>
+      <ul class="work-list">
+        <li>한 줄에 한 행동을 기술하는 QA 전용 DSL로 터치, 대사 진행, 인벤토리 조합, 선택지, 퍼즐 결과를 스크립팅</li>
+        <li>방 씬을 직접 조작하지 않고 타이틀의 새 게임부터 실제 가상 터치를 전달해 A–E 엔딩과 타이틀 복귀까지 검증</li>
+        <li>정밀 조작이 필요한 미니게임만 실제 복귀 처리기에 성공 결과를 주입하고, 핵심 아이템·정보·잠금 상태는 런타임에서 단언</li>
+        <li>0.25~20배속 실행, 명령별 제한시간, 자연스러운 마우스 이동, 중지·자동 종료와 Unity Profiler 기록 지원</li>
+        <li>게임 화면 MP4 녹화와 15개 영문 트레일러 소스의 경로별 일괄 촬영·중단 지점 재개 기능 구현</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>Codex와 Unity CLI 기반 개발 환경</h4>
+      <ul class="work-list">
+        <li><code>AGENT.md</code>에 Unity 에셋·직렬화·코드 구조·검증 규칙을 명시해 Codex가 저장소 기준을 일관되게 따르도록 구성</li>
+        <li>Unity 프로젝트 작업과 시나리오 작성을 위한 저장소 전용 스킬을 제작해 반복 작업의 절차와 품질 기준을 재사용</li>
+        <li>Unity CLI와 Pipeline으로 열린 Unity Editor에 연결해 코드 수정 뒤 컴파일 상태, 콘솔 오류, 씬·프리팹 참조와 데이터 로딩 결과를 확인하는 검증 루프 구축</li>
+        <li>기획과 구현 방향, 최종 판단은 직접 수행하고 Codex는 코드·데이터 조사, 반복 수정과 자동화 작업을 보조하는 협업 도구로 활용</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>플랫폼·저장·도전과제</h4>
+      <ul class="work-list">
+        <li>Steam, Game Center·iCloud, Google Play Games, STOVE를 공통 플랫폼 서비스 인터페이스로 추상화</li>
+        <li>로컬과 클라우드 저장의 시각을 비교해 최신 데이터를 선택하고, 연결 실패 시 로컬 저장으로 안전하게 전환</li>
+        <li>20개 도전과제를 세 언어 데이터로 관리하고 플랫폼별 ID와 진행 상태 동기화</li>
+      </ul>
+    </div>
+
+    <div class="system-block">
+      <h4>멀티 플랫폼 빌드·출시 자동화</h4>
+      <ul class="work-list">
+        <li>Windows, Android, iOS, Steam 빌드를 공용 Unity 작업으로 묶고 태그 기반 버전·릴리스 흐름 구축</li>
+        <li>TestFlight·Google Play AAB 업로드, Steam 빌드·업데이트 배포와 플랫폼별 서명·스토어 설정 자동화</li>
+        <li>빌드 결과물, 라이선스 고지, 스토어 캡슐·게임플레이 스크린샷 제작 도구까지 출시 파이프라인에 포함</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section>
+    <p class="sec-title">Deliverables</p>
+    <ul class="link-list">
+      <li><a href="https://github.com/unagi11/EscapeUnity-demo" target="_blank" rel="noopener">Demo GitHub Repository</a></li>
+      <li><a href="https://unagi11.github.io/EscapeUnity-demo/" target="_blank" rel="noopener">WebGL Demo</a></li>
+      <li><a href="https://store.steampowered.com/app/4719560/Escape_House_of_Bonds/" target="_blank" rel="noopener">Steam Store</a></li>
+      <li><a href="https://youtu.be/Ct5GcwSQ2rg" target="_blank" rel="noopener">Official Trailer</a></li>
+    </ul>
+  </section>
+
+  <script>
+    (function () {
+      var player = document.querySelector('[data-trailer-player]');
+      var playButton = document.querySelector('[data-trailer-play]');
+      if (!player || !playButton) return;
+
+      playButton.addEventListener('click', function () {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/Ct5GcwSQ2rg?autoplay=1&rel=0';
+        iframe.title = '탈출! 인연의 집 공식 트레일러';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allowFullscreen = true;
+        player.replaceChildren(iframe);
+      });
+    })();
+  </script>
+
+</body>
+</html>

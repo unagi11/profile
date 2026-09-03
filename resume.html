@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#245edb">
   <title>장이국 — Resume</title>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="120x120" href="assets/favicon.png">
@@ -210,10 +211,19 @@
     }
 
     .tl-period {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
       font-family: var(--mono);
       font-size: 11px;
       color: var(--muted);
       padding-top: 0.15rem;
+    }
+
+    .tl-duration {
+      color: var(--text);
+      font-size: 10px;
+      letter-spacing: 0.03em;
     }
 
     .tl-content h3 {
@@ -309,19 +319,21 @@
       .header-contacts { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="assets/retro.css">
+  <script src="assets/embedded-page.js" defer></script>
 </head>
-<body>
+<body class="document-shell resume-shell">
 
   <div class="print-bar">
     <a href="index.html" class="btn-back">← Back</a>
-    <button class="btn-print" onclick="window.print()">PDF 저장</button>
+    <button class="btn-print" onclick="window.print()">Save as PDF</button>
   </div>
 
   <!-- HEADER -->
   <header>
     <div class="header-info">
       <h1>장이국</h1>
-      <p class="title">Game Content Programmer</p>
+      <p class="title">Game Content Programmer · 경력 3년 8개월</p>
       <div class="header-contacts">
         <div class="contact-item">
           <span class="contact-label">Email</span>
@@ -352,9 +364,8 @@
   <section>
     <p class="sec-title">About</p>
     <div class="about-text">
-      <p>유저가 몰입할 수 있는, <strong>이야기가 있는 게임</strong>을 만들고 싶습니다.</p>
-      <p>유나 엔진(Cocos2d-x 개조) 기반의 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 제작에 참여하여 스토리 재생 시스템부터 튜토리얼, 결제 SDK 연동, Tokyo Game Show 시연용 버전까지 유저가 경험하는 게임 플로우 전반을 설계하고 구현했습니다.</p>
-      <p>유튜브, 게임 방송, 영화, 인디게임, 콘솔게임, 서브컬처 등 다양한 미디어를 즐기며, 유저 관점의 경험을 개발에 녹이는 것을 중요하게 생각합니다.</p>
+      <p><strong>이야기에 담긴 감정이 플레이어에게 온전히 전달되도록 고민하는 게임 콘텐츠 프로그래머</strong>입니다.</p>
+      <p>스토리, 인게임·아웃게임 튜토리얼과 게임 초반 진행, 전투, 메신저부터 결제, 사운드, 다국어 영상 기능까지 폭넓게 담당했습니다.</p>
     </div>
   </section>
 
@@ -362,11 +373,9 @@
   <section>
     <p class="sec-title">Highlights</p>
     <ul>
-      <li><strong>약 4년간 단일 라이브 타이틀</strong> 개발 참여 &mdash; 카오스 제로 나이트메어 (SuperCreative) · <strong>2025.10.22 글로벌 출시</strong> · <strong>총 590건 이슈 처리</strong></li>
-      <li>스토리 플레이어 · 튜토리얼 · 메신저 · 심리상담 · 특전 · 결제 SDK 등 <strong>컨텐츠 시스템 전반</strong> 설계/구현</li>
-      <li><strong>Tokyo Game Show 시연 버전</strong> 담당 · <strong>중국 2차 CBT</strong> 결제(Midas IAP, Tencent 협업) 연동 및 QA 대응</li>
-      <li><strong>GLSL 셰이더 · FMOD 스크립팅 · Python VAD 자동화</strong> 등 멀티-도메인 컨텐츠 지원 도구 자체 제작</li>
-      <li>Google Play 정식 출시(Pac-chan!), 대학 공모전 <strong>2등(2016) · 3등(2021)</strong> 입상</li>
+      <li>스토리 · 인게임·아웃게임 튜토리얼과 게임 초반 진행 · 전투 · 메신저 · 심리 상담 · 캐릭터 특전 등 <strong>주요 게임 콘텐츠</strong> 구현</li>
+      <li><strong>Tokyo Game Show 시연 빌드</strong> 담당 · Tencent와 협업해 <strong>중국 2차 CBT 결제 기능</strong> 구현 및 QA 대응</li>
+      <li>인게임 사운드 · 캐릭터 보이스 · BGM과 <strong>4개 언어 영상·자막 기능</strong> 담당</li>
     </ul>
   </section>
 
@@ -374,18 +383,14 @@
   <section>
     <p class="sec-title">Skills</p>
     <dl class="skills-grid">
-      <dt>Languages</dt>
-      <dd>TypeScript · C++ · C# · Python</dd>
-      <dt>Engine / Tools</dt>
-      <dd>Cocos2d-x · Unity · Unity HDRP · Spine · FMOD Studio</dd>
-      <dt>Graphics / DCC</dt>
-      <dd>GLSL Shader · Shader Graph · Maya · ZBrush · Substance Painter · Blender</dd>
-      <dt>Infra / DB</dt>
-      <dd>MySQL · Redis · Firebase</dd>
-      <dt>VCS / Collab</dt>
-      <dd>Git · SVN · Mercurial · Notion</dd>
-      <dt>AI Workflow</dt>
-      <dd>Codex · Claude · ChatGPT · Cursor</dd>
+      <dt>Primary</dt>
+      <dd>TypeScript · C++ · Cocos2d-x</dd>
+      <dt>Content / Tools</dt>
+      <dd>Spine · FMOD Studio · GLSL · Python</dd>
+      <dt>Additional</dt>
+      <dd>Unity · C# · Shader Graph · Maya · ZBrush · Substance Painter · Blender</dd>
+      <dt>Data / VCS</dt>
+      <dd>MySQL · Redis · Git · SVN · Mercurial</dd>
       <dt>Languages (Spoken)</dt>
       <dd>한국어 (Native) · English TOEIC 715 · 日本語 JLPT N3</dd>
     </dl>
@@ -395,71 +400,49 @@
   <section>
     <p class="sec-title">Career</p>
     <div class="timeline-item">
-      <span class="tl-period">2022.08 — 2026.04</span>
+      <span class="tl-period">2022.08 — 2026.04<span class="tl-duration">3년 8개월</span></span>
       <div class="tl-content">
         <h3>SuperCreative</h3>
         <p class="tl-company">스마일게이트 계열사 · Game Content Programmer · 카오스 제로 나이트메어</p>
-        <p class="tl-sub">스토리 / 시나리오 시스템</p>
+        <p>단일 타이틀의 개발부터 2025.10.22 글로벌 출시와 라이브 운영까지 참여</p>
+        <p class="tl-sub">Story &amp; Tutorial</p>
         <ul>
-          <li>스토리 플레이어: StoryPlayArgs 인터페이스(약 40개 필드) 설계, playCut() 8단계 실행, StoryActor 계층/렌더 레이어/포트레이트/이펙트 구현</li>
-          <li>스토리 이펙트 4축 구조, 포스트프로세싱 (블러·글리치·환상), 선택지 시스템(루트 분기·심리상담·메신저 분기)</li>
-          <li>SSRStoryViewer (시나리오 라이터용 뷰어 도구) 제작</li>
-          <li>스토리 컨텐츠 노드 재생 플로우: STORY / TEXT / CHAOS / SIMULATION / EXPERIENCE 타입별 처리</li>
-          <li>에피소드 UI 매핑 (메인/임무/트라우마코드/디재스터/이벤트), 페이지 상속 구조 (PageStoryBase → Common → 4개 컨텐츠 페이지)</li>
+          <li>여러 종류의 스토리가 함께 사용하는 스토리 플레이어와 시나리오 담당자가 직접 연출을 작업·확인하는 뷰어 툴 제작</li>
+          <li>인게임·아웃게임 튜토리얼과 게임 초반 진행 전반 담당</li>
         </ul>
-        <p class="tl-sub">튜토리얼</p>
+        <p class="tl-sub">Battle</p>
         <ul>
-          <li>TutorialSceneManager: 인게임 튜토리얼 씬 풀(TSP) 실행/관리</li>
-          <li>OutgameTutorial: 아웃게임 진입 시점 튜토리얼 시스템 구현</li>
+          <li>하드 모드·어비스 모드와 초공간의 유역 콘텐츠 구현</li>
         </ul>
-        <p class="tl-sub">Tencent 협업 · Midas IAP 결제 연동 (2026 H1)</p>
+        <p class="tl-sub">Character Content</p>
         <ul>
-          <li>Script / Server / Client 3개 저장소, 총 130건+ 커밋</li>
-          <li>크리스탈 구매 · 에테르 보충 · 시즌패스 등 상용화 결제 전반 연동</li>
-          <li>중국 2차 CBT 결제 에러 처리 및 QA 대응, 라이브 결제 오류 에러코드 노티</li>
+          <li>유니그램 메시지 기능과 여러 Spine 애니메이션 레이어를 순차·예약 재생하는 캐릭터 특전 시스템 구현</li>
         </ul>
-        <p class="tl-sub">Tokyo Game Show 시연용 빌드 담당 (2025 H2)</p>
+        <p class="tl-sub">Sound, Video &amp; Localization</p>
         <ul>
-          <li>시연용 빌드 제작 및 폴리싱, 엘리트 전투 난입 연출</li>
+          <li>인게임 사운드·캐릭터 보이스·BGM 전반과 관련 기능 API 구현</li>
+          <li>인게임 영상 기능을 담당하고 한국어·일본어·영어·중국어 음성과 자막 조합 기능 구현</li>
         </ul>
-        <p class="tl-sub">메신저 / 심리 상담 / 특전</p>
+        <p class="tl-sub">Release &amp; Global</p>
         <ul>
-          <li>메신저 시스템(유니그램) 개발 구현 및 폴리싱, 즐겨찾기·카테고리 정렬</li>
-          <li>심리 상담 시스템: 선택지 구조 변경, 캐릭터별 밤/낮 마스킹 연출, 신작 적용 툴</li>
-          <li>캐릭터 특전 시스템: 로비 특전 배경/사운드/터치, 영상 특전 애니 클립, 다중 스파인 레이어 모델(LiveEvent / LiveEventBG)</li>
+          <li>Tokyo Game Show 시연 빌드 제작과 현장 플레이 흐름 개선 담당</li>
+          <li>Tencent와 협업해 중국 2차 CBT 결제 기능을 구현하고 오류 처리·QA 대응</li>
         </ul>
-        <p class="tl-sub">사운드 / FMOD</p>
-        <ul>
-          <li>Python VAD 도구로 음성 WAV 구간 추출 → JSON 저장 자동화</li>
-          <li>FMOD Studio 스크립팅: 보이스 이벤트 생성, 뱅크 분리, Clear 구간 마커</li>
-          <li>BGM Ducking, PV 사운드 분리, 시스템 사운드 전반 개선, 립싱크 데이터 자동화 R&amp;D</li>
-        </ul>
-        <p class="tl-sub">인게임 쉐이더 / 영상</p>
-        <ul>
-          <li>GLSL 포스트프로세싱 쉐이더 제작 (회상 셰이더, 글리치 등)</li>
-          <li>인게임 영상 보이스+자막 다국어 조합 송출 (한/일/영/중번 조합)</li>
-        </ul>
-        <p class="tl-sub">기타 컨텐츠</p>
-        <ul>
-          <li>전투 임무: 어비스 모드 / 광폭화, 6장 이슈 대응, 승급 임무, 하드모드, 챕터 달성 보상</li>
-          <li>기물 시스템, 해상도 값 실시간 조절 기능, 제로 시스템 FGT 개편, 모바일 해상도 변경</li>
-        </ul>
-        <p>총 <strong>590건 이슈 처리</strong> (2022 H2: 14 / 23 H1: 26 / 23 H2: 30 / 24 H1: 109 / 24 H2: 51 / 25 H1: 85 / 25 H2: 77 / 26 H1: 3 + 결제 연동 130+ 커밋)</p>
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2022.01 — 2022.02</span>
+      <span class="tl-period">2022.01 — 2022.02<span class="tl-duration">약 2개월</span></span>
       <div class="tl-content">
         <h3>CrossLab, inc.</h3>
         <p class="tl-company">숭실대학교 소속 교원기업 · Unity Intern Programmer</p>
         <ul>
-          <li>Unity 기반 실감형 컨텐츠 R&amp;D 및 프로토타입 개발 참여</li>
+          <li>Unity 기반 실감형 콘텐츠 R&amp;D 및 프로토타입 개발 참여</li>
           <li>교원기업 환경에서의 Unity 워크플로우 · 빌드 파이프라인 실무 경험</li>
         </ul>
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2018.02 — 2020.01</span>
+      <span class="tl-period">2018.02 — 2020.01<span class="tl-duration">약 2년</span></span>
       <div class="tl-content">
         <h3>대한민국 공군</h3>
         <p class="tl-company">제8전투비행단 · 무장정비병 · 병장 만기 전역</p>
@@ -475,10 +458,10 @@
   <section>
     <p class="sec-title">Projects</p>
     <div class="timeline-item">
-      <span class="tl-period">2026.05 — 2026.09</span>
+      <span class="tl-period">2026.05 — 2026.09<span class="tl-duration">약 5개월</span></span>
       <div class="tl-content">
-        <h3><a href="https://github.com/unagi11/EscapeUnity-demo" target="_blank" rel="noopener" class="cert-link">탈출! 인연의 집</a></h3>
-        <p class="tl-company">내러티브 방탈출 게임 · 1인 개발 · Steam / Google Play / App Store / STOVE 출시 준비</p>
+        <h3><a href="project-escape-house-of-bonds.html" class="cert-link">탈출! 인연의 집</a></h3>
+        <p class="tl-company">내러티브 방탈출 게임 · 1인 개발 · Steam / Google Play / App Store / STOVE</p>
         <p>Unity 6 · C# · URP · UniTask · GitHub Actions</p>
         <ul>
           <li>Unity 직렬화 기반의 데이터 주도형 오브젝트 상호작용과 아이템 획득·조합·진행 상태·세이브/로드 구현</li>
@@ -490,26 +473,7 @@
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2022.08 — 2026.04</span>
-      <div class="tl-content">
-        <h3><a href="project-czn.html" class="cert-link">카오스 제로 나이트메어</a></h3>
-        <p class="tl-company">멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 · 회사 프로젝트 · 글로벌 출시 2025.10.22 · 총 590건 이슈 처리</p>
-        <p>유나 엔진(Cocos2d-x 개조) · TypeScript · Spine · FMOD · MySQL · Redis</p>
-        <ul>
-          <li>스토리 플레이어: StoryPlayArgs 인터페이스 설계(약 40개 필드), playCut() 8단계 실행, StoryActor 계층/이펙트/포스트프로세싱</li>
-          <li>스토리 컨텐츠: STORY/TEXT/CHAOS/SIMULATION/EXPERIENCE 노드 타입별 재생, 메인스토리·임무·트라우마코드·디재스터·이벤트 에피소드 UI 매핑</li>
-          <li>튜토리얼: 인게임 튜토리얼 씬 풀(TSP) 실행/관리, 아웃게임 튜토리얼 시스템</li>
-          <li>Tencent 협업 · Midas IAP 결제 연동(Script/Server/Client 3개 저장소 · 130건+ 커밋), 중국 2차 CBT 결제 에러 처리 및 QA 대응</li>
-          <li>메신저 시스템(유니그램) 개발 및 폴리싱, 즐겨찾기·카테고리 정렬</li>
-          <li>심리 상담 시스템: 선택지 구조 변경, 캐릭터별 밤/낮 마스킹 연출, 신작 적용 툴</li>
-          <li>캐릭터 특전 시스템: 로비 특전 배경/사운드/터치, 영상 특전 애니 클립, 다중 스파인 레이어 모델(LiveEvent)</li>
-          <li>사운드: Python VAD 기반 음성 구간 추출 도구, FMOD Studio 스크립팅, BGM Ducking, 립싱크 자동화 R&amp;D</li>
-          <li>Tokyo Game Show 시연용 빌드 담당 · 엘리트 전투 난입 · 시연 폴리싱</li>
-        </ul>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <span class="tl-period">2021 · 1개월</span>
+      <span class="tl-period">2021<span class="tl-duration">약 1개월</span></span>
       <div class="tl-content">
         <h3><a href="project-whodunit.html" class="cert-link">Whodunit</a></h3>
         <p class="tl-company">실감형 1인칭 추리 게임 · Team Cipher · 팀 4명 (메인 기획 / 프로그래밍 담당)</p>
@@ -523,7 +487,7 @@
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2021 · 2 — 3주</span>
+      <span class="tl-period">2021<span class="tl-duration">약 2 — 3주</span></span>
       <div class="tl-content">
         <h3><a href="project-hdrp-metro.html" class="cert-link">Unity HDRP Metro</a></h3>
         <p class="tl-company">서울 교통공사 2호선 2000호대 VVVF 전동차 객실 HDRP 재현 · 1인 개발</p>
@@ -538,7 +502,7 @@
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2020.06 — 2020.08</span>
+      <span class="tl-period">2020.06 — 2020.08<span class="tl-duration">약 2개월</span></span>
       <div class="tl-content">
         <h3><a href="project-pacchan.html" class="cert-link">Pac-chan!</a></h3>
         <p class="tl-company">팩맨을 Unity-Chan!과 3D로 재해석한 모바일 게임 · 1인 개발 · Google Play 정식 출시</p>
@@ -558,7 +522,7 @@
   <section>
     <p class="sec-title">Education</p>
     <div class="timeline-item">
-      <span class="tl-period">2016.03 — 2022.09</span>
+      <span class="tl-period">2016.03 — 2022.09<span class="tl-duration">6년 6개월</span></span>
       <div class="tl-content">
         <h3>숭실대학교</h3>
         <p class="tl-company">컴퓨터학부</p>
@@ -584,23 +548,10 @@
       </div>
     </div>
     <div class="timeline-item">
-      <span class="tl-period">2022.02</span>
-      <div class="tl-content">
-        <h3>운전면허 1종 보통</h3>
-      </div>
-    </div>
-    <div class="timeline-item">
       <span class="tl-period">2022.01.13</span>
       <div class="tl-content">
         <h3>JLPT N3</h3>
         <p class="tl-company">141 / 180 · 합격</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <span class="tl-period">2021.10</span>
-      <div class="tl-content">
-        <h3>TOPCIT 374 (수준 2)</h3>
-        <p class="tl-company">소프트웨어 역량 검정</p>
       </div>
     </div>
   </section>
@@ -609,9 +560,9 @@
   <section>
     <p class="sec-title">Activities</p>
     <div class="timeline-item">
-      <span class="tl-period">2016 — 2022</span>
+      <span class="tl-period">2016 — 2022<span class="tl-duration">약 6년</span></span>
       <div class="tl-content">
-        <h3><a href="https://cafe.naver.com/gammaru" target="_blank" class="cert-link">겜마루 (GAMMARU)</a></h3>
+        <h3><a href="https://gammaru.dev/" target="_blank" rel="noopener" class="cert-link">겜마루 (GAMMARU)</a></h3>
         <p class="tl-company">숭실대학교 게임 제작 중앙동아리 · 21기 입단 · 2017년 회장</p>
         <p class="tl-sub">게임 제작 공모전</p>
         <ul>
@@ -625,22 +576,6 @@
           <li>여름 신입생 공모전 · 겨울 OB 공모전 진행</li>
           <li>중간총회 · MT 운영 총괄</li>
           <li>동아리 홍보 · 가입 및 인원관리</li>
-        </ul>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <span class="tl-period">2013 — 2015</span>
-      <div class="tl-content">
-        <h3><a href="https://cafe.naver.com/ptcomputer" target="_blank" class="cert-link">CPU</a></h3>
-        <p class="tl-company">평택고등학교 프로그래밍 동아리</p>
-        <p class="tl-sub">게임 제작 공모전</p>
-        <ul>
-          <li>2013년 동아리 경진대회 — 방탈출 게임 출품 · 전시</li>
-          <li>2014년 동아리 경진대회 — 추리 게임 출품 · 전시</li>
-        </ul>
-        <p class="tl-sub">동아리 활동</p>
-        <ul>
-          <li>프로그래밍 기초 학습 및 스터디 활동</li>
         </ul>
       </div>
     </div>

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JANG.EIGUK — 게임 컨텐츠 프로그래머 포트폴리오</title>
+  <title>JANG.EIGUK — 게임 콘텐츠 프로그래머 포트폴리오</title>
 
   <!-- SEO -->
-  <meta name="description" content="장이국 (JANG.EIGUK) — 게임 컨텐츠 프로그래머 포트폴리오. 유나 엔진(Cocos2d-x 개조) 기반 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 제작. TypeScript · C++ · C# · GLSL · Unity · FMOD.">
+  <meta name="description" content="장이국 (JANG.EIGUK) — 이야기에 담긴 감정이 플레이어에게 온전히 전달되도록 고민하는 게임 콘텐츠 프로그래머.">
   <meta name="author" content="장이국 (JANG.EIGUK)">
   <meta name="keywords" content="게임 프로그래머, 게임 컨텐츠 프로그래머, Game Developer, Game Programmer, Unity, Cocos2d-x, TypeScript, 포트폴리오, JANG.EIGUK, 장이국">
   <link rel="canonical" href="https://unagi11.github.io/profile/">
@@ -14,8 +14,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://unagi11.github.io/profile/">
-  <meta property="og:title" content="JANG.EIGUK — 게임 컨텐츠 프로그래머">
-  <meta property="og:description" content="유나 엔진(Cocos2d-x 개조) 기반 멀티플랫폼 서브컬처 덱빌딩 게임을 만든 게임 컨텐츠 프로그래머 장이국의 포트폴리오.">
+  <meta property="og:title" content="JANG.EIGUK — 게임 콘텐츠 프로그래머">
+  <meta property="og:description" content="이야기에 담긴 감정이 플레이어에게 온전히 전달되도록 고민하는 게임 콘텐츠 프로그래머 장이국의 포트폴리오.">
   <meta property="og:image" content="https://unagi11.github.io/profile/assets/profile-og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -24,8 +24,7 @@
   <meta property="og:site_name" content="JANG.EIGUK Portfolio">
 
   <!-- Theme Color -->
-  <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e0d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#245edb">
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="120x120" href="assets/favicon.png">
@@ -151,69 +150,6 @@
       margin-bottom: 2rem;
     }
 
-    /* AVAILABILITY BADGE */
-    .avail-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #059669;
-      background: rgba(5, 150, 105, 0.08);
-      border: 1px solid rgba(5, 150, 105, 0.25);
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .avail-badge {
-        color: #34d399;
-        background: rgba(52, 211, 153, 0.10);
-        border-color: rgba(52, 211, 153, 0.30);
-      }
-    }
-
-    .status-dot,
-    .avail-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10b981;
-      display: inline-block;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .status-dot {
-      margin-right: 0.4rem;
-      vertical-align: 1px;
-    }
-
-    .avail-dot::after,
-    .status-dot::after {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background: #10b981;
-      opacity: 0.5;
-      animation: availPulse 1.8s ease-out infinite;
-    }
-
-    @keyframes availPulse {
-      0%   { transform: scale(0.6); opacity: 0.55; }
-      100% { transform: scale(1.8); opacity: 0; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .avail-dot::after,
-      .status-dot::after { animation: none; opacity: 0.35; transform: scale(1.1); }
-    }
-
     .hero-name {
       font-size: clamp(3rem, 9vw, 5.5rem);
       font-weight: 300;
@@ -222,56 +158,12 @@
       margin-bottom: 2rem;
     }
 
-    .hero-tagline {
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 3rem;
-    }
-
     .hero-photo {
       width: 100%;
       height: 320px;
       object-fit: cover;
       object-position: center top;
       display: block;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.65rem 1.4rem;
-      border: 1px solid var(--border);
-      color: var(--text);
-      background: transparent;
-      transition: background 0.2s, border-color 0.2s;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: var(--surface);
-      border-color: var(--muted);
-    }
-
-    .btn-filled {
-      background: var(--text);
-      color: var(--bg);
-      border-color: var(--text);
-    }
-
-    .btn-filled:hover {
-      opacity: 0.85;
-      background: var(--text);
     }
 
     /* SECTION HEADER */
@@ -294,121 +186,7 @@
       background: var(--border);
     }
 
-    /* GANTT CHART */
-    .gantt {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .gantt-header {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .gantt-years {
-      position: relative;
-      height: 1.1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .gantt-years span {
-      position: absolute;
-      bottom: 0.15rem;
-      transform: translateX(-50%);
-      font-size: 10px;
-    }
-
-    .gantt-row {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 0.45rem;
-    }
-
-    .gantt-label {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .gantt-track {
-      position: relative;
-      height: 22px;
-      background: rgba(125, 125, 125, 0.08);
-      border-radius: 3px;
-    }
-
-    .gantt-bar {
-      position: absolute;
-      top: 3px;
-      bottom: 3px;
-      border-radius: 2px;
-      color: #fff;
-      font-size: 10px;
-    }
-
-    .gantt-bar-label {
-      display: block;
-      padding: 0 6px;
-      line-height: 16px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .gantt-bar.c-career     { background: #2563eb; }
-    .gantt-bar.c-education  { background: #059669; }
-    .gantt-bar.c-military   { background: #6b7280; }
-    .gantt-bar.c-activities { background: #d97706; }
-
-    .gantt-bar {
-      cursor: pointer;
-      transition: filter 0.15s, transform 0.15s;
-    }
-    .gantt-bar:hover {
-      filter: brightness(1.15);
-      transform: translateY(-1px);
-      z-index: 2;
-    }
-    #gantt-tip {
-      position: fixed;
-      background: #1a1a1a;
-      color: #fff;
-      padding: 0.55rem 0.75rem;
-      border-radius: 4px;
-      font-family: var(--sans);
-      font-size: 11px;
-      line-height: 1.5;
-      white-space: pre-line;
-      max-width: min(280px, calc(100vw - 24px));
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      pointer-events: none;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.15s;
-    }
-    #gantt-tip.show { opacity: 1; }
-
-    @media (max-width: 640px) {
-      .gantt-header,
-      .gantt-row { grid-template-columns: 70px 1fr; gap: 0.5rem; }
-      .gantt-bar { font-size: 9px; padding: 0 4px; }
-    }
-
     /* ABOUT */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 200px;
-      gap: 4rem;
-      align-items: start;
-    }
-
     .about-text p {
       color: var(--muted);
       line-height: 1.9;
@@ -416,28 +194,6 @@
     }
 
     .about-text p:last-child { margin-bottom: 0; }
-
-    .about-meta {
-      border-left: 1px solid var(--border);
-      padding-left: 2rem;
-    }
-
-    .meta-row {
-      margin-bottom: 2rem;
-    }
-
-    .meta-row dt {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-    }
-
-    .meta-row dd {
-      font-size: 14px;
-    }
 
     /* SKILLS */
     .skills-grid {
@@ -654,15 +410,6 @@
     }
 
     /* CONTACT */
-    .contact-intro {
-      font-size: 1.5rem;
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1.4;
-      margin-bottom: 2.5rem;
-      max-width: 500px;
-    }
-
     .contact-links {
       display: flex;
       flex-direction: column;
@@ -721,8 +468,6 @@
       section { padding-left: 1.25rem; padding-right: 1.25rem; }
       #hero { grid-template-columns: 1fr 120px; gap: 0 1.5rem; }
       .hero-photo { height: auto; width: 120px; object-position: center center; margin-top: 0; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
       .project-item { grid-template-columns: 1fr; }
@@ -731,21 +476,18 @@
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
+  <link rel="stylesheet" href="assets/retro.css">
 </head>
-<body>
+<body class="home-shell">
 
   <nav>
-    <a href="#hero" class="nav-logo">JANG.EIGUK</a>
+    <a href="#hero" class="nav-logo" aria-label="JANG.EIGUK 홈">JANG.EIGUK</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#career">Career</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#activities">Activities</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#hero" aria-label="About">About</a></li>
+      <li><a href="#timeline" aria-label="Timeline">Timeline</a></li>
+      <li><a href="#projects" aria-label="Projects">Projects</a></li>
+      <li><a href="resume.html" aria-label="Resume">Resume</a></li>
+      <li><a href="#contact" aria-label="Contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -753,143 +495,88 @@
   <section id="hero">
     <div class="hero-content">
       <p class="hero-label">Game Content Programmer · 성남시, 경기도</p>
-      <span class="avail-badge" aria-label="현재 이직을 열어두고 있습니다">
-        <span class="avail-dot" aria-hidden="true"></span>
-        Available · Open to offers
-      </span>
-      <h1 class="hero-name">장이국</h1>
-      <p class="hero-tagline">게임 컨텐츠 프로그래머</p>
+      <h1 class="hero-name" aria-label="장이국">장이국</h1>
+      <div class="hero-intro">
+        <p>이야기에 담긴 감정이 플레이어에게 온전히 전달되도록 고민하는 게임 콘텐츠 프로그래머입니다.</p>
+        <p>스토리, 인게임·아웃게임 튜토리얼과 게임 초반 진행, 전투, 메신저부터 결제, 사운드, 다국어 영상 기능까지 폭넓게 담당했습니다.</p>
+        <p>기획·시나리오·아트·사운드 담당자가 편하게 사용할 수 있는 구조를 만들고, 출시 후 발견된 문제까지 개선해 왔습니다.</p>
+      </div>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-filled">View Projects</a>
-        <a href="#contact" class="btn">Get in Touch</a>
+        <a href="resume.html" class="btn">Resume</a>
       </div>
     </div>
-    <img src="assets/profile.jpg" alt="장이국" class="hero-photo">
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <p class="sec-label">About</p>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          유저가 몰입할 수 있는, <strong>이야기가 있는 게임</strong>을 만들고 싶습니다.
-        </p>
-        <p>
-          유나 엔진(Cocos2d-x 개조) 기반의 멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임 제작에 참여하여 스토리 재생 시스템부터 튜토리얼, 결제 SDK 연동, Tokyo Game Show 시연용 버전까지 유저가 경험하는 게임 플로우 전반을 설계하고 구현했습니다.
-        </p>
-        <p>
-          유튜브, 게임 방송, 영화, 인디게임, 콘솔게임, 서브컬처 등 다양한 미디어를 즐기며, 유저 관점의 경험을 개발에 녹이는 것을 중요하게 생각합니다.
-        </p>
-      </div>
-      <div class="about-meta">
-        <dl>
-          <div class="meta-row">
-            <dt>Location</dt>
-            <dd>경기 성남</dd>
-          </div>
-          <div class="meta-row">
-            <dt>Experience</dt>
-            <dd>~4 Years</dd>
-          </div>
-          <div class="meta-row">
-            <dt>Focus</dt>
-            <dd>Game Content Programming</dd>
-          </div>
-          <div class="meta-row">
+    <img src="assets/profile.jpg" alt="장이국" class="hero-photo" role="button" tabindex="0" aria-label="장이국 프로필 사진">
+    <div class="hero-about">
+      <div class="hero-stack">
+        <p class="about-stack-label">Core Stack</p>
+        <div class="skills-grid">
+          <dl class="skill-group">
             <dt>Languages</dt>
-            <dd>한국어 · English (TOEIC 715) · 日本語 (JLPT N3)</dd>
-          </div>
-        </dl>
+            <dd>
+              <span class="tag">TypeScript</span>
+              <span class="tag">C++</span>
+              <span class="tag">C#</span>
+              <span class="tag">Python</span>
+            </dd>
+          </dl>
+          <dl class="skill-group">
+            <dt>Engine &amp; Content</dt>
+            <dd>
+              <span class="tag">Cocos2d-x</span>
+              <span class="tag">Unity</span>
+              <span class="tag">Spine</span>
+              <span class="tag">FMOD Studio</span>
+            </dd>
+          </dl>
+          <dl class="skill-group">
+            <dt>Graphics &amp; Data</dt>
+            <dd>
+              <span class="tag">GLSL / HLSL</span>
+              <span class="tag">Aseprite</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Redis</span>
+            </dd>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <p class="sec-label">Skills</p>
-
-    <div class="skills-grid">
-      <dl class="skill-group">
-        <dt>Languages</dt>
-        <dd>
-          <span class="tag">TypeScript</span>
-          <span class="tag">C++</span>
-          <span class="tag">C#</span>
-          <span class="tag">Python</span>
-          <span class="tag">GLSL</span>
-        </dd>
-      </dl>
-      <dl class="skill-group">
-        <dt>Engine / Tools</dt>
-        <dd>
-          <span class="tag">Cocos2d-x</span>
-          <span class="tag">Unity</span>
-          <span class="tag">Spine</span>
-          <span class="tag">FMOD Studio</span>
-        </dd>
-      </dl>
-      <dl class="skill-group">
-        <dt>Infra / DB</dt>
-        <dd>
-          <span class="tag">MySQL</span>
-          <span class="tag">Redis</span>
-          <span class="tag">SVN</span>
-          <span class="tag">Git</span>
-          <span class="tag">Mercurial</span>
-          <span class="tag">Firebase</span>
-        </dd>
-      </dl>
-    </div>
-  </section>
-
-  <!-- TIMELINE (GANTT) -->
+  <!-- TIMELINE -->
   <section id="timeline">
     <p class="sec-label">Timeline</p>
-    <div class="gantt">
-      <div class="gantt-header">
-        <div></div>
-        <div class="gantt-years">
-          <span style="left:0%">2013</span>
-          <span style="left:14.29%">2015</span>
-          <span style="left:28.57%">2017</span>
-          <span style="left:42.86%">2019</span>
-          <span style="left:57.14%">2021</span>
-          <span style="left:71.43%">2023</span>
-          <span style="left:85.71%">2025</span>
-          <span style="left:100%">2027</span>
-        </div>
-      </div>
 
-      <div class="gantt-row">
-        <span class="gantt-label">Career</span>
-        <div class="gantt-track">
-          <div class="gantt-bar c-career" style="left:64.29%; width:1.19%;" data-tip="CrossLab, inc.&#10;2022.01 — 2022.02&#10;Unity Intern Programmer"></div>
-          <div class="gantt-bar c-career" style="left:68.45%; width:26.79%;" data-tip="SuperCreative&#10;2022.08 — 2026.04&#10;Game Content Programmer · 카오스 제로 나이트메어"><span class="gantt-bar-label">SuperCreative</span></div>
+    <div class="career-timeline">
+      <article class="career-entry">
+        <p class="career-period">2026.05 — 2026.09 <span>5M</span></p>
+        <div class="career-content">
+          <h3><a href="project-escape-house-of-bonds.html">탈출! 인연의 집 ↗</a></h3>
+          <p>Solo Developer · 레트로풍 방탈출 어드벤처 게임</p>
+          <small>Game Design · Development · Art · QA · Publishing</small>
         </div>
-      </div>
-
-      <div class="gantt-row">
-        <span class="gantt-label">Military</span>
-        <div class="gantt-track">
-          <div class="gantt-bar c-military" style="left:36.31%; width:14.29%;" data-tip="대한민국 공군&#10;2018.02 — 2020.01&#10;제8전투비행단 · 무장정비병&#10;병장 만기 전역"><span class="gantt-bar-label">공군 무장정비</span></div>
+      </article>
+      <article class="career-entry">
+        <p class="career-period">2022.08 — 2026.04 <span>3Y 8M</span></p>
+        <div class="career-content">
+          <h3><a href="project-czn.html">SuperCreative ↗</a></h3>
+          <p>Game Content Programmer · 카오스 제로 나이트메어</p>
+          <small>Development · Global Launch · Live Service</small>
         </div>
-      </div>
-
-      <div class="gantt-row">
-        <span class="gantt-label">Education</span>
-        <div class="gantt-track">
-          <div class="gantt-bar c-education" style="left:22.62%; width:47.02%;" data-tip="숭실대학교 컴퓨터학부&#10;2016.03 — 2022.09&#10;전체 GPA 3.82 / 4.5 · 전공 GPA 3.87 / 4.5"><span class="gantt-bar-label">숭실대학교 컴퓨터학부</span></div>
+      </article>
+      <article class="career-entry">
+        <p class="career-period">2022.01 — 2022.02 <span>2M</span></p>
+        <div class="career-content">
+          <h3>CrossLab, inc.</h3>
+          <p>Unity Intern Programmer · 실감형 콘텐츠 R&amp;D</p>
         </div>
-      </div>
-
-      <div class="gantt-row">
-        <span class="gantt-label">Activities</span>
-        <div class="gantt-track">
-          <div class="gantt-bar c-activities" style="left:0%; width:21.43%;" data-tip="CPU&#10;2013 — 2015&#10;평택고등학교 프로그래밍 동아리&#10;동아리 경진대회 방탈출/추리 게임 출품"><span class="gantt-bar-label">CPU</span></div>
-          <div class="gantt-bar c-activities" style="left:21.43%; width:48.21%;" data-tip="겜마루 (GAMMARU)&#10;2016 — 2022&#10;숭실대학교 게임 제작 중앙동아리&#10;21기 입단 · 2017년 회장&#10;공모전 2등(2016) · 3등(2021)"><span class="gantt-bar-label">겜마루</span></div>
+      </article>
+      <article class="career-entry">
+        <p class="career-period">2018.02 — 2020.01 <span>2Y</span></p>
+        <div class="career-content">
+          <h3>대한민국 공군</h3>
+          <p>제8전투비행단 · 무장정비병 · 병장 만기 전역</p>
         </div>
-      </div>
+      </article>
     </div>
   </section>
 
@@ -898,210 +585,69 @@
     <p class="sec-label">Projects</p>
     <div class="projects-list">
 
-      <div class="project-item">
-        <p class="project-num">01</p>
-        <h3><a href="https://github.com/unagi11/EscapeUnity-demo" target="_blank" rel="noopener">탈출! 인연의 집<span class="arrow">↗</span></a></h3>
-        <p>Unity 6로 제작한 내러티브 방탈출 게임. 데이터 주도형 상호작용, 3개 언어 현지화, 세이브/로드, 커스텀 포스트 이펙트와 다섯 엔딩 자동 QA를 구현했습니다.</p>
-        <p class="project-meta">2026.05 — 2026.09 · 1인 개발 · Steam / Google Play / App Store / STOVE 출시 준비</p>
-        <div class="project-tags">
-          <span class="tag">Unity 6</span>
-          <span class="tag">C#</span>
-          <span class="tag">URP</span>
-          <span class="tag">UniTask</span>
-          <span class="tag">GitHub Actions</span>
-        </div>
-      </div>
-
-      <div class="project-item">
-        <p class="project-num">02</p>
+      <article class="project-item project-featured">
+        <a class="project-media" href="project-czn.html" aria-label="카오스 제로 나이트메어 프로젝트 보기">
+          <img src="assets/project-czn-thumb.jpg" alt="카오스 제로 나이트메어 작업 영상" loading="eager">
+        </a>
+        <p class="project-num">01 · SHIPPED TITLE</p>
         <h3><a href="project-czn.html">카오스 제로 나이트메어<span class="arrow">↗</span></a></h3>
-        <p>멀티플랫폼(AOS · iOS · PC) 서브컬처 덱빌딩 게임. 스토리 · 튜토리얼 · 전투 임무 · 메신저 · 심리 상담 · 특전 · 사운드 등 컨텐츠 전반 제작.</p>
-        <p class="project-meta">2022.08 — 2026.04 · 회사 프로젝트 · 글로벌 출시 2025.10.22</p>
+        <p>글로벌 출시 서브컬처 덱빌딩 게임. 스토리, 인게임·아웃게임 튜토리얼과 게임 초반 진행, 전투, 캐릭터 콘텐츠 및 결제·사운드·다국어 영상 기능을 담당.</p>
+        <p class="project-meta">2022.08 — 2026.04 · Game Content Programmer · 글로벌 출시 및 라이브 운영</p>
         <div class="project-tags">
-          <span class="tag">유나 엔진 (Cocos2d-x 개조)</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Spine</span>
-          <span class="tag">FMOD</span>
-          <span class="tag">MySQL</span>
-          <span class="tag">Redis</span>
+          <span class="tag">유나 엔진</span><span class="tag">TypeScript</span><span class="tag">Spine</span><span class="tag">FMOD</span>
         </div>
-      </div>
+      </article>
 
-      <div class="project-item">
-        <p class="project-num">03</p>
+      <article class="project-item">
+        <a class="project-media" href="project-escape-house-of-bonds.html" aria-label="탈출! 인연의 집 프로젝트 보기">
+          <img src="assets/project-escape-main.png" alt="Escape! House of Bonds 타이틀 이미지" loading="lazy" style="object-fit: contain; background: #071111;">
+        </a>
+        <p class="project-num">02 · SOLO INDIE GAME</p>
+        <h3><a href="project-escape-house-of-bonds.html">탈출! 인연의 집<span class="arrow">↗</span></a></h3>
+        <p>레트로풍 방탈출 어드벤처 게임. 기획·시나리오·프로그래밍·아트·사운드·자동 QA·플랫폼 출시까지 1인 개발.</p>
+        <p class="project-meta">2026.05 — 2026.09 · Solo Developer · Steam / iOS / Android / STOVE</p>
+        <div class="project-tags"><span class="tag">Unity 6</span><span class="tag">C#</span><span class="tag">Aseprite</span><span class="tag">Automated QA</span><span class="tag">Codex</span><span class="tag">Unity CLI</span></div>
+      </article>
+
+      <article class="project-item">
+        <a class="project-media" href="project-whodunit.html" aria-label="Whodunit 프로젝트 보기">
+          <img src="assets/project-whodunit-thumb.jpg" alt="Whodunit 게임 영상" loading="lazy">
+        </a>
+        <p class="project-num">03 · TEAM PROJECT</p>
         <h3><a href="project-whodunit.html">Whodunit<span class="arrow">↗</span></a></h3>
         <p>논리적 추론과 단서만으로 살인 사건을 추리하는 실감형 1인칭 추리 게임. 오브젝트 인터랙션 시스템 및 커스텀 셰이더 제작.</p>
         <p class="project-meta">2021 · 1개월 · 팀 4명</p>
-        <div class="project-tags">
-          <span class="tag">Unity</span>
-          <span class="tag">C#</span>
-          <span class="tag">Shader Graph</span>
-        </div>
-      </div>
+        <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Shader Graph</span></div>
+      </article>
 
-      <div class="project-item">
-        <p class="project-num">04</p>
+      <article class="project-item">
+        <a class="project-media" href="project-hdrp-metro.html" aria-label="Unity HDRP Metro 프로젝트 보기">
+          <img src="assets/project-metro-thumb.jpg" alt="Unity HDRP Metro 영상" loading="lazy">
+        </a>
+        <p class="project-num">04 · SOLO PROJECT</p>
         <h3><a href="project-hdrp-metro.html">Unity HDRP Metro<span class="arrow">↗</span></a></h3>
-        <p>서울 교통공사 2호선 전동차 객실을 HDRP로 재현한 프로젝트. Normal Map 베이킹, 1인칭 컨트롤러, 카메라 흔들림 효과 구현.</p>
+        <p>서울교통공사 2호선 전동차 객실을 HDRP로 재현한 1인 프로젝트. 모델링·텍스처 제작부터 라이팅과 1인칭 이동 연출까지 전 과정 담당.</p>
         <p class="project-meta">2021 · 2 — 3주 · 1인 개발</p>
-        <div class="project-tags">
-          <span class="tag">Unity HDRP</span>
-          <span class="tag">Maya</span>
-          <span class="tag">ZBrush</span>
-          <span class="tag">Substance Painter</span>
-        </div>
-      </div>
+        <div class="project-tags"><span class="tag">Unity HDRP</span><span class="tag">Maya</span><span class="tag">Substance Painter</span></div>
+      </article>
 
-      <div class="project-item">
-        <p class="project-num">05</p>
+      <article class="project-item">
+        <a class="project-media" href="project-pacchan.html" aria-label="Pac-chan 프로젝트 보기">
+          <img src="assets/project-pacchan-thumb.jpg" alt="Pac-chan 게임 영상" loading="lazy">
+        </a>
+        <p class="project-num">05 · SOLO PROJECT</p>
         <h3><a href="project-pacchan.html">Pac-chan!<span class="arrow">↗</span></a></h3>
-        <p>팩맨을 Unity-Chan!과 3D로 재해석한 모바일 게임. Ghost AI(Coroutine FSM), 서드파티 조이스틱 컨트롤러 구현. Google Play 정식 출시.</p>
+        <p>팩맨을 Unity-Chan!과 3D로 재해석한 모바일 게임. Coroutine FSM 기반 Ghost AI를 구현하고 Google Play에 출시.</p>
         <p class="project-meta">2020.06 — 2020.08 · 1인 개발</p>
-        <div class="project-tags">
-          <span class="tag">Unity</span>
-          <span class="tag">C#</span>
-          <span class="tag">Blender</span>
-          <span class="tag">Google Play</span>
-        </div>
-      </div>
+        <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Google Play</span></div>
+      </article>
 
-    </div>
-  </section>
-
-  <!-- CAREER -->
-  <section id="career">
-    <p class="sec-label">Career</p>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="tl-period">2022.08 — 2026.04</span>
-        <div class="tl-content">
-          <h3>SuperCreative</h3>
-          <p class="tl-company">스마일게이트 계열사 · Game Content Programmer · 카오스 제로 나이트메어</p>
-          <ul class="tl-list">
-            <li>스토리 플레이어 / 뷰어 툴 제작</li>
-            <li>스토리 컨텐츠 / 스토리맵 시스템 제작</li>
-            <li>튜토리얼 시스템 제작</li>
-            <li>Tencent 협업 · Midas IAP 결제 연동 · 중국 CBT 대응</li>
-            <li>Tokyo Game Show 시연용 버전 담당</li>
-            <li>메신저 시스템 (유니그램) 제작</li>
-            <li>심리 상담 시스템 제작</li>
-            <li>캐릭터 특전 시스템 제작</li>
-            <li>사운드 시스템 / FMOD 스크립팅</li>
-            <li>인게임 쉐이더 제작 (GLSL · 포스트프로세싱)</li>
-            <li>인게임 영상 음성, 자막 현지화 기능 제작</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="tl-period">2022.01 — 2022.02</span>
-        <div class="tl-content">
-          <h3>CrossLab, inc.</h3>
-          <p class="tl-company">숭실대학교 소속 교원기업 · Unity Intern Programmer</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="tl-period">2018.02 — 2020.01</span>
-        <div class="tl-content">
-          <h3>대한민국 공군</h3>
-          <p class="tl-company">제8전투비행단 · 무장정비병 · 병장 만기 전역</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <p class="sec-label">Education</p>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="tl-period">2016.03 — 2022.09</span>
-        <div class="tl-content">
-          <h3>숭실대학교</h3>
-          <p class="tl-company">컴퓨터학부</p>
-          <p>전체 GPA 3.82 / 4.5 &nbsp;·&nbsp; 전공 GPA 3.87 / 4.5</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATES -->
-  <section id="certificates">
-    <p class="sec-label">Certificates</p>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="tl-period">2022.02</span>
-        <div class="tl-content">
-          <h3>운전면허 1종 보통</h3>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="tl-period">2022.01.13</span>
-        <div class="tl-content">
-          <h3>JLPT N3</h3>
-          <p class="tl-company">141 / 180 · 합격</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="tl-period">2021.10</span>
-        <div class="tl-content">
-          <h3>TOPCIT 374 (수준 2)</h3>
-          <p class="tl-company">소프트웨어 역량 검정</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ACTIVITIES -->
-  <section id="activities">
-    <p class="sec-label">Activities</p>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="tl-period">2016 — 2022</span>
-        <div class="tl-content">
-          <h3><a href="https://cafe.naver.com/gammaru" target="_blank" class="inline-link">겜마루 (GAMMARU)</a></h3>
-          <p class="tl-company">숭실대학교 게임 제작 중앙동아리 · 21기 입단 · 2017년 회장</p>
-          <p class="tl-sub">게임 제작 공모전</p>
-          <ul class="tl-list">
-            <li>2016년 신입생 공모전 — 2인 대전 게임 · <strong>2등 입상</strong> (<a href="https://youtu.be/gnvfxKXbl58" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
-            <li>2017년 OB 공모전 — 3D 어드벤처 게임 (<a href="https://youtu.be/qa9s0fYDkRI" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
-            <li>2021년 OB 공모전 — 로그라이크 SRPG · <strong>3등 입상</strong> (<a href="https://youtu.be/KvFtiTkh744" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
-          </ul>
-          <p class="tl-sub">운영진 활동</p>
-          <ul class="tl-list">
-            <li>동아리 활동 총괄 운영</li>
-            <li>여름 신입생 공모전 · 겨울 OB 공모전 진행</li>
-            <li>중간총회 · MT 운영 총괄</li>
-            <li>동아리 홍보 · 가입 및 인원관리</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="tl-period">2013 — 2015</span>
-        <div class="tl-content">
-          <h3><a href="https://cafe.naver.com/ptcomputer" target="_blank" class="inline-link">CPU</a></h3>
-          <p class="tl-company">평택고등학교 프로그래밍 동아리</p>
-          <p class="tl-sub">게임 제작 공모전</p>
-          <ul class="tl-list">
-            <li>2013년 동아리 경진대회 — 방탈출 게임 출품 · 전시 (<a href="https://youtu.be/9NBXV2DcF0c" target="_blank" rel="noopener" class="inline-link">영상</a>)</li>
-            <li>2014년 동아리 경진대회 — 추리 게임 출품 · 전시</li>
-          </ul>
-          <p class="tl-sub">동아리 활동</p>
-          <ul class="tl-list">
-            <li>프로그래밍 기초 학습 및 스터디 활동</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
     <p class="sec-label">Contact</p>
-    <p class="contact-intro">편하게 연락 부탁드립니다.</p>
     <div class="contact-links">
       <a href="mailto:unagi11@naver.com" class="contact-link">
         <span>Email</span>
@@ -1128,7 +674,7 @@
 
   <footer>
     <p>© 2026 JANG.EIGUK</p>
-    <p id="last-updated">Last updated 2026.09.03</p>
+    <p id="last-updated">Last updated 2026.09.02</p>
   <script>
     (function () {
       var el = document.getElementById('last-updated');
@@ -1155,83 +701,19 @@
   </script>
   </footer>
 
-  <!-- Gantt Tooltip -->
-  <div id="gantt-tip"></div>
-  <script>
-    (function () {
-      var tip = document.getElementById('gantt-tip');
-      var activeBar = null;
-      function show(bar) {
-        var text = bar.dataset.tip;
-        if (!text) return;
-        tip.textContent = text;
-        tip.classList.add('show');
-        var rect = bar.getBoundingClientRect();
-        var tipRect = tip.getBoundingClientRect();
-        var margin = 10;
-        var left = rect.left + rect.width / 2 - tipRect.width / 2;
-        left = Math.max(margin, Math.min(left, window.innerWidth - tipRect.width - margin));
-        var top = rect.top - tipRect.height - 8;
-        if (top < margin) top = rect.bottom + 8;
-        tip.style.left = left + 'px';
-        tip.style.top = top + 'px';
-        activeBar = bar;
-      }
-      function hide() {
-        tip.classList.remove('show');
-        activeBar = null;
-      }
-      document.querySelectorAll('.gantt-bar').forEach(function (bar) {
-        bar.addEventListener('mouseenter', function () { show(bar); });
-        bar.addEventListener('mouseleave', hide);
-        bar.addEventListener('click', function (e) {
-          e.stopPropagation();
-          if (activeBar === bar) hide();
-          else show(bar);
-        });
-      });
-      document.addEventListener('click', function (e) {
-        if (!e.target.closest('.gantt-bar')) hide();
-      });
-      window.addEventListener('scroll', hide, { passive: true });
-      window.addEventListener('resize', hide);
-    })();
-  </script>
+  <dialog class="project-dialog" data-project-dialog aria-label="상세 문서 보기">
+    <div class="project-dialog__bar">
+      <span class="project-dialog__label" data-project-label>Project Detail</span>
+      <div class="project-dialog__actions">
+        <a class="project-dialog__open" data-project-open href="#" target="_blank" rel="noopener">Open in New Tab ↗</a>
+        <button class="project-dialog__close" data-project-close type="button" aria-label="닫기">×</button>
+      </div>
+    </div>
+    <iframe class="project-dialog__frame" data-project-frame title="상세 문서 내용"></iframe>
+  </dialog>
+  <script src="assets/project-modal.js"></script>
 
-  <!-- Easter Egg -->
-  <style>
-    .easter-egg {
-      position: fixed;
-      top: 50%;
-      left: -200px;
-      transform: translateY(-50%);
-      width: 200px;
-      height: 200px;
-      image-rendering: pixelated;
-      pointer-events: none;
-      z-index: 9999;
-    }
-    .easter-egg.run {
-      animation: dash 1.8s ease-in-out forwards;
-    }
-    @keyframes dash {
-      0%   { left: -200px; }
-      100% { left: calc(100vw + 200px); }
-    }
-  </style>
-  <script>
-    document.querySelector('.hero-photo').addEventListener('click', function () {
-      var img = document.createElement('img');
-      img.src = 'assets/favicon.gif';
-      img.alt = '';
-      img.className = 'easter-egg';
-      img.style.top = (Math.random() * 60 + 20) + '%';
-      img.style.transform = 'translateY(-50%) scaleX(-1)';
-      document.body.appendChild(img);
-      void img.offsetWidth;
-      img.classList.add('run');
-    });
-  </script>
+  <script src="assets/easter-egg.js"></script>
 
 </body>
 </html>
