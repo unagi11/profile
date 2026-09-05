@@ -4,3 +4,4 @@ draft_*.md
 assets/*certificate*.pdf
 .claude/
 preview.html
+/reports
